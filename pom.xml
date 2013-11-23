@@ -14,6 +14,7 @@
         <module>adalight</module>
         <module>pi-music</module>
         <module>cluster-communication</module>
+        <module>webclient</module>
     </modules>
 
 
