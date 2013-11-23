@@ -3,7 +3,6 @@ package nl.johnvanweel.iot.light.access.boblight;
 import com.sun.jna.Pointer;
 import nl.johnvanweel.iot.light.service.ILightService;
 import nl.johnvanweel.iot.light.service.LightException;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -11,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Implementation using the boblight daemon running on the default address.
  */
 public class BobILightService implements ILightService {
-    private Logger logger = Logger.getLogger(BobILightService.class);
-
     public static final int ALL_PIXELS = -1;
 
     private BoblightDaemon daemon;
@@ -33,7 +30,6 @@ public class BobILightService implements ILightService {
 
     @Override
     public void setPixel(int pixelNumber, int red, int green, int blue) {
-//        logger.info(String.format("Setting pixel [%s] to [%s,%s,%s].", pixelNumber,red, green, blue));
         if (pixelNumber >= 0) {
             daemon.boblight_addpixel(bob, pixelNumber, new int[]{red, green, blue});
         }
@@ -41,7 +37,6 @@ public class BobILightService implements ILightService {
 
     @Override
     public void allPixels(int red, int green, int blue) {
-//        logger.info(String.format("Setting all pixels to [%s,%s,%s].", red, green, blue));
         daemon.boblight_addpixel(bob, ALL_PIXELS, new int[]{red, green, blue});
     }
 
