@@ -1,5 +1,6 @@
 package nl.johnvanweel.iot.access.cluster.listener;
 
+import nl.johnvanweel.iot.access.cluster.message.GroupMessage;
 import org.apache.log4j.Logger;
 import org.jgroups.Message;
 import org.jgroups.ReceiverAdapter;
@@ -10,7 +11,8 @@ import java.util.List;
 import java.util.function.Predicate;
 
 /**
- *
+ * Generic adapter that receives messages from the cluster and attempts
+ * to find the proper handler for it.
  */
 public class ClusterReceiverAdapter extends ReceiverAdapter {
     private Logger logger = Logger.getLogger(ClusterReceiverAdapter.class);
@@ -26,6 +28,13 @@ public class ClusterReceiverAdapter extends ReceiverAdapter {
     @Override
     public void receive(Message msg) {
         logger.info("Received message with payload " + msg.getObject());
+
+        if (msg.getObject() instanceof GroupMessage) {
+            GroupMessage message = (GroupMessage) msg.getObject();
+            message.setSender(msg.getSrc());
+            msg.setObject(message);
+        }
+
         messageListeners.stream().filter(canHandle(msg)).findFirst().orElse(defaultMessageListener).handle(msg);
         logger.debug("Message handled with payload " + msg.getObject());
     }

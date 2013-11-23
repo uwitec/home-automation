@@ -17,13 +17,8 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-/**
- *
- */
 public class IdentifyMessageListenerTest {
     private IdentifyMessageListener listener;
-
-    private IMessageListener[] messageListeners;
 
     private JGroupsChannel channel;
 
@@ -32,9 +27,6 @@ public class IdentifyMessageListenerTest {
         channel = mock(JGroupsChannel.class);
         listener = new IdentifyMessageListener(channel);
 
-        messageListeners = new IMessageListener[]{mock(IMessageListener.class)};
-
-        listener.setAllMessageListeners(listener);
     }
 
     @Test

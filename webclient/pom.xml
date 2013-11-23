@@ -25,7 +25,11 @@
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -37,6 +41,11 @@
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.9.12</version>
+        </dependency>
+        <dependency>
+            <groupId>nl.johnvanweel.iot</groupId>
+            <artifactId>adalight-api</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>

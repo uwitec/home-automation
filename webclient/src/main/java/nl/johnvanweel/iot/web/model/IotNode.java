@@ -1,14 +1,19 @@
 package nl.johnvanweel.iot.web.model;
 
+import nl.johnvanweel.iot.access.cluster.capabilities.Capability;
+import org.jgroups.Address;
+
 /**
- *
+ * Represents a device on the network
  */
 public class IotNode {
     private String name;
-    private String[] capabilities;
+    private transient Address address;
+    private Capability[] capabilities;
 
-    public IotNode(String name, String... capabilities) {
+    public IotNode(final String name, final Address address, final Capability... capabilities) {
         this.name = name;
+        this.address = address;
         this.capabilities = capabilities;
     }
 
@@ -20,11 +25,15 @@ public class IotNode {
         this.name = name;
     }
 
-    public String[] getCapabilities() {
+    public Capability[] getCapabilities() {
         return capabilities;
     }
 
-    public void setCapabilities(String[] capabilities) {
+    public void setCapabilities(Capability[] capabilities) {
         this.capabilities = capabilities;
+    }
+
+    public Address getAddress() {
+        return address;
     }
 }

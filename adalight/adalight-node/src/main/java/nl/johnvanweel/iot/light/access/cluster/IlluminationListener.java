@@ -1,12 +1,14 @@
 package nl.johnvanweel.iot.light.access.cluster;
 
 import nl.johnvanweel.iot.access.cluster.listener.IMessageListener;
+import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.IlluminationGroupMessage;
 import nl.johnvanweel.iot.light.service.ILightService;
 import org.jgroups.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- *
+ * Listens to IlluminationGroupMessage. This will read the new light value from the message and
+ * set it.
  */
 public class IlluminationListener implements IMessageListener {
     private final ILightService lightService;

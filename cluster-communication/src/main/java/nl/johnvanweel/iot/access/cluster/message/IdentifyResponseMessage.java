@@ -1,13 +1,15 @@
 package nl.johnvanweel.iot.access.cluster.message;
 
+import nl.johnvanweel.iot.access.cluster.capabilities.Capability;
+
 /**
- *
+ * Response to Identification request.
  */
 public class IdentifyResponseMessage extends GroupMessage {
     private String host;
-    private String[] capabilities;
+    private Capability[] capabilities;
 
-    public IdentifyResponseMessage(String host, String... capabilities) {
+    public IdentifyResponseMessage(String host, Capability... capabilities) {
         this.host = host;
         this.capabilities = capabilities;
     }
@@ -20,11 +22,11 @@ public class IdentifyResponseMessage extends GroupMessage {
         this.host = host;
     }
 
-    public String[] getCapabilities() {
+    public Capability[] getCapabilities() {
         return capabilities;
     }
 
-    public void setCapabilities(String[] capabilities) {
+    public void setCapabilities(Capability[] capabilities) {
         this.capabilities = capabilities;
     }
 }

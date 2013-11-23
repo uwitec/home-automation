@@ -16,4 +16,10 @@ devicesControllers.controller('DeviceDetailCtrl', ['$scope', '$routeParams', '$h
         });
 
         $scope.orderProp = 'name';
+
+        $scope.setColor = function (color) {
+            $http.put('devices/' + $routeParams.name + "/Light/" + color, color).success(function (data) {
+                $scope.device = data;
+            });
+        };
     }]);

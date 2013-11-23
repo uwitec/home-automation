@@ -73,6 +73,11 @@
             <version>1.7.2</version>
         </dependency>
         <dependency>
+            <groupId>nl.johnvanweel.iot</groupId>
+            <artifactId>adalight-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>

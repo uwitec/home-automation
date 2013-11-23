@@ -1,7 +1,7 @@
 package nl.johnvanweel.iot.light.service;
 
 import nl.johnvanweel.iot.access.cluster.IChannel;
-import nl.johnvanweel.iot.light.access.cluster.IlluminationGroupMessage;
+import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.IlluminationGroupMessage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

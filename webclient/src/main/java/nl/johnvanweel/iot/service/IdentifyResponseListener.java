@@ -7,7 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- *
+ * Accepts identification responses.
+ * Each response will be placed on the list of known devices.
+ * TODO: Add listeners for removed devices.
+ * TODO: Remove the heartbeat.
+ * TODO: Add listener for added devices.
  */
 @Component
 public class IdentifyResponseListener extends IdentifyResponseMessageListener {
@@ -20,6 +24,6 @@ public class IdentifyResponseListener extends IdentifyResponseMessageListener {
 
     @Override
     public void acceptMessage(IdentifyResponseMessage message) {
-        availableDevicesService.add(new IotNode(message.getHost(), message.getCapabilities()));
+        availableDevicesService.add(new IotNode(message.getHost(), message.getSender(), message.getCapabilities()));
     }
 }

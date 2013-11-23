@@ -5,6 +5,8 @@
 
     <import resource="classpath*:META-INF/spring/cluster.xml"/>
 
+    <bean class="nl.johnvanweel.iot.light.capability.LightCapable"/>
+
     <!-- Listeners -->
     <bean class="nl.johnvanweel.iot.light.access.cluster.IlluminationListener"/>
 

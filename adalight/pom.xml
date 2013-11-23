@@ -14,6 +14,6 @@
 
     <modules>
         <module>adalight-node</module>
+        <module>adalight-api</module>
     </modules>
-
 </project>
