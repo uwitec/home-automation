@@ -8,7 +8,7 @@
     <context:annotation-config/>
 
     <import resource="access.xml"/>
-    <import resource="cluster-access.xml"/>
-    <!--<import resource="demo.xml"/>-->
+    <!--<import resource="cluster-access.xml"/>-->
+    <import resource="demo.xml"/>
     <!--<import resource="sunset.xml"/>-->
 </beans>

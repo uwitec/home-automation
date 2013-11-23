@@ -8,4 +8,7 @@
         <property name="configuration" value="udp.xml"/>
     </bean>
     <bean class="nl.johnvanweel.iot.access.cluster.listener.ClusterReceiverAdapter"/>
+
+    <!-- Listeners -->
+    <bean class="nl.johnvanweel.iot.access.cluster.listener.IdentifyMessageListener"/>
 </beans>
