@@ -11,4 +11,5 @@
 
     <!-- Listeners -->
     <bean class="nl.johnvanweel.iot.access.cluster.listener.IdentifyMessageListener"/>
+    <bean abstract="true" class="nl.johnvanweel.iot.access.cluster.listener.IdentifyResponseMessageListener"/>
 </beans>

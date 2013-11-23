@@ -1,4 +1,4 @@
-package n.johnvanweel.iot.web.model;
+package nl.johnvanweel.iot.web.model;
 
 /**
  *

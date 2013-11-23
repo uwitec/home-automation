@@ -23,14 +23,6 @@
         <property name="prefix" value="/WEB-INF/application/"/>
         <property name="suffix" value=".html"/>
     </bean>
-    <!--<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">-->
-    <!--<property name="templateLoaderPath" value="/WEB-INF/ftl/"/>-->
-    <!--</bean>-->
 
-    <!--<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">-->
-    <!--<property name="cache" value="true"/>-->
-    <!--<property name="prefix" value=""/>-->
-    <!--<property name="suffix" value=".ftl"/>-->
-    <!--</bean>-->
 
 </beans>

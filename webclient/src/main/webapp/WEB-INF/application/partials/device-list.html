@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2">
+            <!--Sidebar content-->
+
+            Search: <input ng-model="query">
+            Sort by:
+            <select ng-model="orderProp">
+                <option value="name">Alphabetical</option>
+            </select>
+
+        </div>
+        <div class="span10">
+            <p class="device" ng-repeat="device in devices | filter:query | orderBy:orderProp">
+                <a href="#/devices/{{device.name}}">
+                    <img src="images/raspi.png"/><span>{{device.name}}</span>
+                </a>
+            </p>
+        </div>
+    </div>
+</div>

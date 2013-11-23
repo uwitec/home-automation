@@ -7,4 +7,22 @@
 
     <context:component-scan base-package="nl.johnvanweel.iot.service"/>
     <context:annotation-config/>
+
+    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="availableDevicesService"/>
+        <property name="targetMethod" value="reload"/>
+    </bean>
+
+    <bean id="lightsUpdateTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="jobDetail"/>
+        <property name="cronExpression" value="0/10 * * * * ?"/>
+    </bean>
+
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="lightsUpdateTrigger"/>
+            </list>
+        </property>
+    </bean>
 </beans>

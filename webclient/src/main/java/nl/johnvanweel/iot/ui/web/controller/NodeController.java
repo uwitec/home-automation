@@ -1,9 +1,10 @@
 package nl.johnvanweel.iot.ui.web.controller;
 
-import n.johnvanweel.iot.web.model.IotNode;
-import nl.johnvanweel.iot.service.IotService;
+import nl.johnvanweel.iot.service.AvailableDevicesService;
+import nl.johnvanweel.iot.web.model.IotNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -11,19 +12,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *
  */
 @Controller
-@RequestMapping("/nodes")
+@RequestMapping("/devices")
 public class NodeController {
-    private final IotService service;
+    private final AvailableDevicesService service;
 
     @Autowired
-    public NodeController(final IotService service) {
+    public NodeController(final AvailableDevicesService service) {
         this.service = service;
     }
 
     @RequestMapping("list")
     @ResponseBody
     public IotNode[] listNodes() {
+        return service.getAllDevices();
+    }
 
-        return new IotNode[]{new IotNode("test-pi", "IotLight")};
+
+    @RequestMapping("{name}")
+    @ResponseBody
+    public IotNode getNodeDetails(@PathVariable String name) {
+        return service.getDevice(name);
     }
 }
+

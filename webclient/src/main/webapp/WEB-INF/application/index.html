@@ -1,39 +1,18 @@
 <!doctype html>
-<html lang="en" ng-app="phonecatApp">
+<html lang="en" ng-app="devicesApp">
 <head>
     <meta charset="utf-8">
     <title>Google Phone Gallery</title>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="lib/js/angular.js"></script>
-    <script src="application/controller/nodesController.js"></script>
+    <script src="lib/js/angular-route.js"></script>
+    <script src="application/controller/devicesController.js"></script>
+    <script src="application/app.js"></script>
 </head>
-<body ng-controller="PhoneListCtrl">
+<body>
 
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span2">
-            <!--Sidebar content-->
-
-            Search: <input ng-model="query">
-            Sort by:
-            <select ng-model="orderProp">
-                <option value="name">Alphabetical</option>
-            </select>
-
-        </div>
-        <div class="span10">
-            <!--Body content-->
-
-
-            <p class="device" ng-repeat="device in devices | filter:query | orderBy:orderProp">
-                <img src="images/raspi.png"/><span>{{device.name}}</span>
-            </p>
-
-
-        </div>
-    </div>
-</div>
+<div ng-view></div>
 
 </body>
 </html>
