@@ -38,6 +38,7 @@ public class BobILightService implements ILightService {
     @Override
     public void allPixels(int red, int green, int blue) {
         daemon.boblight_addpixel(bob, ALL_PIXELS, new int[]{red, green, blue});
+        send();
     }
 
     @Override

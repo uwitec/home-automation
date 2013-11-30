@@ -1,4 +1,4 @@
-package nl.johnvanweel.iot.light.demo;
+package nl.johnvanweel.iot.light.step;
 
 import nl.johnvanweel.iot.light.service.dummy.DummyILightService;
 import org.junit.Before;
@@ -20,6 +20,6 @@ public class CylonTest {
 
     @Test
     public void testCylon() throws Exception {
-        cylon.runRemo();
+        cylon.step();
     }
 }

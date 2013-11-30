@@ -18,15 +18,10 @@ public class SpringContextTest {
     private IChannel channel;
 
     @Test
-    public void testCron() throws Exception {
-        Thread.sleep(5000);
-
-        System.out.println("================================================");
+    public void testLights() throws Exception {
         for (int i = 0; i < 255; i++) {
             channel.broadcast(new IlluminationGroupMessage(new int[]{i, 0, 0}));
             Thread.sleep(100);
         }
-        System.out.println("================================================");
-        Thread.sleep(5000);
     }
 }

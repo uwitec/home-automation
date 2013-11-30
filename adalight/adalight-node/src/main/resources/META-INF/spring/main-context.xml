@@ -9,6 +9,33 @@
 
     <import resource="access.xml"/>
     <import resource="cluster-access.xml"/>
-    <!--<import resource="demo.xml"/>-->
+
+
+    <!-- Runmode control-->
+    <bean class="nl.johnvanweel.iot.light.runmode.RunModeControl">
+        <property name="defaultMode" ref="nl.johnvanweel.iot.light.runmode.SpectrumMode"/>
+    </bean>
+
+    <!-- Runmodes -->
+    <bean class="nl.johnvanweel.iot.light.runmode.FancySpectrumMode">
+        <property name="speed" value="200"/>
+    </bean>
+    <bean class="nl.johnvanweel.iot.light.runmode.SpectrumMode">
+        <property name="speed" value="200"/>
+    </bean>
+    <bean class="nl.johnvanweel.iot.light.runmode.StaticMode">
+        <property name="speed" value="1000"/>
+    </bean>
+
+    <!-- Supporting beans-->
+    <bean class="nl.johnvanweel.iot.light.step.FancySpectrum"/>
+    <bean class="nl.johnvanweel.iot.light.step.Spectrum"/>
+
+    <!-- Configuration -->
+    <bean class="nl.johnvanweel.iot.light.configuration.LightsConfiguration">
+        <property name="numberOfLights" value="20"/>
+    </bean>
+
+    <!--<import resource="step.xml"/>-->
     <!--<import resource="sunset.xml"/>-->
 </beans>

@@ -1,4 +1,4 @@
-package nl.johnvanweel.iot.light.demo;
+package nl.johnvanweel.iot.light.step;
 
 import nl.johnvanweel.iot.light.controller.DaytimeController;
 import nl.johnvanweel.iot.light.service.ILightService;
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  *
  */
-public class DaylightDemo implements IDemo {
+public class DaylightDemo implements Steppable {
     private final DaytimeController daytimeController;
 
     @Autowired
@@ -23,7 +23,7 @@ public class DaylightDemo implements IDemo {
     }
 
     @Override
-    public void runRemo() throws InterruptedException {
+    public void step() throws InterruptedException {
         for (int i = 0; i < 240; i++) {
             daytimeController.run();
 

@@ -9,5 +9,5 @@
 
     <!-- Listeners -->
     <bean class="nl.johnvanweel.iot.light.access.cluster.IlluminationListener"/>
-
+    <bean class="nl.johnvanweel.iot.light.access.cluster.RunmodeListener"/>
 </beans>

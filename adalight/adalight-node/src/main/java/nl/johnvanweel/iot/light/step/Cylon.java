@@ -1,4 +1,4 @@
-package nl.johnvanweel.iot.light.demo;
+package nl.johnvanweel.iot.light.step;
 
 import nl.johnvanweel.iot.light.service.ILightService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * Any networked computer should have a Cylon on board.
  */
-public class Cylon implements IDemo {
+public class Cylon implements Steppable {
     private final ILightService ILightService;
 
     @Autowired
@@ -15,7 +15,7 @@ public class Cylon implements IDemo {
     }
 
     @Override
-    public void runRemo() throws InterruptedException {
+    public void step() throws InterruptedException {
         int vlow = 5;
         int low = 20;
         int med = 50;
