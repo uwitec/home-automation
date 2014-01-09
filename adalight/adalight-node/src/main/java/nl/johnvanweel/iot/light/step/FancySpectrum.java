@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Loop through the spectrum, changing one light at the time
  */
 public class FancySpectrum implements Steppable {
-    private final ILightService ILightService;
+    private final ILightService lightService;
     private final LightsConfiguration configuration;
 
     private final double frequency = .1;
 
     @Autowired
-    public FancySpectrum(final ILightService ILightService, final LightsConfiguration configuration) {
-        this.ILightService = ILightService;
+    public FancySpectrum(final ILightService lightService, final LightsConfiguration configuration) {
+        this.lightService = lightService;
         this.configuration = configuration;
     }
 
@@ -34,26 +34,26 @@ public class FancySpectrum implements Steppable {
         int green = (int) (Math.sin(frequency * iteration + 2) * 127 + 128);
         int blue = (int) (Math.sin(frequency * iteration + 4) * 127 + 128);
 
-        if (currentPixel >= configuration.getNumberOfLights()) {
+        if (currentPixel > configuration.getNumberOfLights()) {
             fixOldColors(red, green, blue);
         }
 
         setPixelColors(red, green, blue);
         currentPixel++;
 
-        ILightService.send();
+        lightService.send();
     }
 
     private void setPixelColors(int red, int green, int blue) {
         for (int j = 0; j < configuration.getNumberOfLights(); j++) {
             if (currentPixel >= j) {
-                ILightService.setPixel(j, red, green, blue);
+                lightService.setPixel(j, red, green, blue);
             } else {
-                ILightService.setPixel(j, oldRed, oldGreen, oldBlue);
+                lightService.setPixel(j, oldRed, oldGreen, oldBlue);
             }
         }
 
-        ILightService.setPixel(currentPixel, 255, 0, 0);
+        lightService.setPixel(currentPixel, 255, 0, 0);
     }
 
     private void fixOldColors(int red, int green, int blue) {

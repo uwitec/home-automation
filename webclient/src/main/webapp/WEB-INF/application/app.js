@@ -14,6 +14,10 @@ devicesApp.config(['$routeProvider',
                 templateUrl: 'application/partials/device-detail.html',
                 controller: 'DeviceDetailCtrl'
             }).
+            when('/devices/:name/Light', {
+                templateUrl: 'application/partials/device-detail.html',
+                controller: 'DeviceDetailCtrl'
+            }).
             otherwise({
                 redirectTo: '/devices'
             });

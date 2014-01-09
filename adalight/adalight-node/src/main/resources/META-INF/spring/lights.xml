@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- Runmode control-->
+    <bean class="nl.johnvanweel.iot.light.runmode.RunModeControl">
+        <property name="defaultMode" ref="nl.johnvanweel.iot.light.runmode.SunsetMode"/>
+    </bean>
+
+    <!-- Runmodes -->
+    <bean class="nl.johnvanweel.iot.light.runmode.FancySpectrumMode">
+        <property name="speed" value="200"/>
+    </bean>
+    <bean class="nl.johnvanweel.iot.light.runmode.SpectrumMode">
+        <property name="speed" value="200"/>
+    </bean>
+    <bean class="nl.johnvanweel.iot.light.runmode.StaticMode">
+        <property name="speed" value="1000"/>
+    </bean>
+    <bean class="nl.johnvanweel.iot.light.runmode.SunsetMode">
+        <property name="speed" value="50"/>
+    </bean>
+
+
+    <!-- Supporting beans-->
+    <bean class="nl.johnvanweel.iot.light.step.FancySpectrum"/>
+    <bean class="nl.johnvanweel.iot.light.step.Spectrum"/>
+    <bean class="nl.johnvanweel.iot.light.step.Sunset"/>
+    <bean class="nl.johnvanweel.iot.light.sunset.DummySunsetService"/>
+
+    <!-- Configuration -->
+    <bean class="nl.johnvanweel.iot.light.configuration.LightsConfiguration">
+        <property name="numberOfLights" value="20"/>
+    </bean>
+
+</beans>

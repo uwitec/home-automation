@@ -1,6 +1,7 @@
 package nl.johnvanweel.iot.light.runmode;
 
 import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.IlluminationGroupMessage;
+import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.MyIllumiGM;
 import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunModes;
 import nl.johnvanweel.iot.light.service.ILightService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,18 @@ public class StaticMode extends RunMode {
 
     @Override
     protected void reconfigure(IlluminationGroupMessage message) {
-        lightService.allPixels(message.getRgb()[0], message.getRgb()[1], message.getRgb()[2]);
+
+        if (message instanceof MyIllumiGM) {
+            MyIllumiGM gm = (MyIllumiGM) message;
+            for (int pixel = 0; pixel < gm.getRgbs().length; pixel++) {
+                lightService.setPixel(pixel, gm.getRgbs()[pixel][0], gm.getRgbs()[pixel][1], gm.getRgbs()[pixel][2]);
+
+            }
+
+            lightService.send();
+        } else {
+            lightService.allPixels(message.getRgb()[0], message.getRgb()[1], message.getRgb()[2]);
+        }
+
     }
 }

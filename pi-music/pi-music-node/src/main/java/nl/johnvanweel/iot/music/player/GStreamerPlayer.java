@@ -59,6 +59,7 @@ public class GStreamerPlayer extends Thread {
                     System.out.println("Got audio pad");
                                         /* link'n'play */
                     pad.link(audioPad);
+
                 }
 
             }

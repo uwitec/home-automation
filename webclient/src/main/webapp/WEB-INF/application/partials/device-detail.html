@@ -14,19 +14,25 @@
 
         <p ng-repeat="runmode in capability.runModeses">
             <input id="{{runmode}}" type="submit" ng-click="setRunmode(runmode)" value="{{runmode}}"/>
-        </p>
-    </div>
+
+        <div ng-app="{{runmode}}">
+
+        </div>
     </p>
 
-    <p>
 
-    <div style="width:100%">
-        <div ng-click="setColor('ff0000')" style="width:100px;height:100px;background-color: #ff0000"></div>
-        <div ng-click="setColor('ffff00')" style="width:100px;height:100px;background-color: #ffff00"></div>
-        <div ng-click="setColor('00ff00')" style="width:100px;height:100px;background-color: #00ff00"></div>
-        <div ng-click="setColor('0000ff')" style="width:100px;height:100px;background-color: #0000ff"></div>
-        <div ng-click="setColor('00ffff')" style="width:100px;height:100px;background-color: #00ffff"></div>
-    </div>
-    </p>
+</div>
+</p>
+
+<p>
+
+<div style="width:100%">
+    <div ng-click="setColor('ff0000')" style="width:100px;height:100px;background-color: #ff0000"></div>
+    <div ng-click="setColor('ffff00')" style="width:100px;height:100px;background-color: #ffff00"></div>
+    <div ng-click="setColor('00ff00')" style="width:100px;height:100px;background-color: #00ff00"></div>
+    <div ng-click="setColor('0000ff')" style="width:100px;height:100px;background-color: #0000ff"></div>
+    <div ng-click="setColor('00ffff')" style="width:100px;height:100px;background-color: #00ffff"></div>
+</div>
+</p>
 </div>
 

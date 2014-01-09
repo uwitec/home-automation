@@ -1,4 +1,5 @@
 var devicesControllers = angular.module('devicesControllers', []);
+var lightControl = angular.module('lightCtrl', []);
 
 devicesControllers.controller('DeviceListCtrl', ['$scope', '$http',
     function ($scope, $http) {
@@ -17,6 +18,18 @@ devicesControllers.controller('DeviceDetailCtrl', ['$scope', '$routeParams', '$h
 
         $scope.orderProp = 'name';
 
+        $scope.setColor = function (color) {
+            $http.put('devices/' + $routeParams.name + "/Light/color/" + color);
+        };
+
+        $scope.setRunmode = function (mode) {
+            $http.put('devices/' + $routeParams.name + "/Light/runmode/" + mode);
+        }
+    }]);
+
+
+lightControl.controller('LightCtrl', ['$scope', '$routeParams', '$http',
+    function ($scope, $routeParams, $http) {
         $scope.setColor = function (color) {
             $http.put('devices/' + $routeParams.name + "/Light/color/" + color);
         };
