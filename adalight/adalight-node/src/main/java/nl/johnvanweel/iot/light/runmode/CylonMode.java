@@ -2,20 +2,20 @@ package nl.johnvanweel.iot.light.runmode;
 
 import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.IlluminationGroupMessage;
 import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunModes;
-import nl.johnvanweel.iot.light.step.Spectrum;
+import nl.johnvanweel.iot.light.step.Cylon;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Displays all colors
  */
 public class CylonMode extends RunMode {
-    public static final String RUNMODE = RunModes.SPECTRUM.getName();
+    public static final String RUNMODE = RunModes.CYLON.getName();
 
-    private final Spectrum spectrum;
+    private final Cylon spectrum;
 
     @Autowired
-    public CylonMode(Spectrum spectrum) {
-        this.spectrum = spectrum;
+    public CylonMode(Cylon cylon) {
+        this.spectrum = cylon;
     }
 
     @Override
