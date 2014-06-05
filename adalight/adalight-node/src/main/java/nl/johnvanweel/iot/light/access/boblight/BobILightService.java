@@ -17,6 +17,7 @@ public class BobILightService implements ILightService {
 
     @Autowired
     public BobILightService(final BoblightDeamonFactory factory) {
+
         this.daemon = factory.getInstance();
 
         bob = daemon.boblight_init();
