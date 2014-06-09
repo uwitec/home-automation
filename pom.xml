@@ -15,6 +15,7 @@
         <module>pi-music</module>
         <module>cluster-communication</module>
         <module>webclient</module>
+        <module>sensor-network</module>
     </modules>
 
 

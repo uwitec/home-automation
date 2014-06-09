@@ -23,6 +23,9 @@
     <bean class="nl.johnvanweel.iot.light.runmode.SunsetMode">
         <property name="speed" value="50"/>
     </bean>
+    <bean class="nl.johnvanweel.iot.light.runmode.SensorMode">
+        <property name="speed" value="50"/>
+    </bean>
 
 
     <!-- Supporting beans-->
@@ -31,7 +34,9 @@
     <bean class="nl.johnvanweel.iot.light.step.Sunset"/>
     <bean class="nl.johnvanweel.iot.light.step.Cylon"/>
     <bean class="nl.johnvanweel.iot.light.sunset.ScraperSunsetService"/>
+    <bean class="nl.johnvanweel.iot.light.step.SettableGradient"/>
 
+    <import resource="classpath*:sensor-context.xml"/>
 
     <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="nl.johnvanweel.iot.light.sunset.ScraperSunsetService"/>

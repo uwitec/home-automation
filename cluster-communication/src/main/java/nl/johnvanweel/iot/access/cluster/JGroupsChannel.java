@@ -1,5 +1,7 @@
 package nl.johnvanweel.iot.access.cluster;
 
+import com.hazelcast.config.Config;
+import com.hazelcast.core.*;
 import nl.johnvanweel.iot.access.cluster.message.GroupMessage;
 import org.jgroups.Address;
 import org.jgroups.JChannel;
@@ -74,4 +76,5 @@ public class JGroupsChannel implements IChannel {
     public void setReceiverAdapter(ReceiverAdapter receiverAdapter) {
         this.receiverAdapter = receiverAdapter;
     }
+
 }
