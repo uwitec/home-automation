@@ -1,7 +1,6 @@
 package nl.johnvanweel.iot.light.runmode;
 
 import com.hazelcast.core.EntryEvent;
-import com.hazelcast.core.EntryListener;
 import nl.johnvanweel.iot.access.cluster.listener.DefaultEntryListener;
 import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.IlluminationGroupMessage;
 import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunModes;
@@ -17,8 +16,8 @@ import javax.annotation.PostConstruct;
 /**
  * Displays all colors
  */
-public class SensorMode extends RunMode implements DefaultEntryListener<String, SensorReading> {
-	private final Logger log = Logger.getLogger(SensorMode.class);
+public class TemperatureSensorMode extends RunMode implements DefaultEntryListener<String, SensorReading> {
+	private final Logger log = Logger.getLogger(TemperatureSensorMode.class);
 
     public static final String RUNMODE = RunModes.SENSOR.getName();
 
@@ -26,7 +25,7 @@ public class SensorMode extends RunMode implements DefaultEntryListener<String, 
 	private final SensorDao sensorDao;
 
     @Autowired
-    public SensorMode(final SettableGradient sensor, final SensorDao sensorDao) {
+    public TemperatureSensorMode(final SettableGradient sensor, final SensorDao sensorDao) {
         this.sensor = sensor;
 		this.sensorDao = sensorDao;
 	}

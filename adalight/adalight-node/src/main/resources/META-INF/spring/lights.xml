@@ -23,7 +23,7 @@
     <bean class="nl.johnvanweel.iot.light.runmode.SunsetMode">
         <property name="speed" value="50"/>
     </bean>
-    <bean class="nl.johnvanweel.iot.light.runmode.SensorMode">
+    <bean class="nl.johnvanweel.iot.light.runmode.TemperatureSensorMode">
         <property name="speed" value="50"/>
     </bean>
 
