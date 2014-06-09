@@ -30,7 +30,7 @@ public class SensorIntegrationTest {
 	@Test
 	public void testSensorStorage() throws InterruptedException {
 		SensorReading expectedReading = null;
-		for (int i = 0; i < 90; i++) {
+		for (int i = 0; i < 100; i++) {
 			expectedReading = new SensorReading(System.currentTimeMillis(), i, "1", SensorType.TEMPERATURE);
 			dao.storeSensorReading(expectedReading);
 			Thread.sleep(1000);

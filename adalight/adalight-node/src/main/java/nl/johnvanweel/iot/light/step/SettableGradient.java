@@ -25,7 +25,7 @@ public class SettableGradient implements Steppable {
 	public void step() {
 //		lightService.allPixels(colorGradient[gradientStep][0], colorGradient[gradientStep][1], colorGradient[gradientStep][2]);
 		for (int i = 0; i  <gradientStep;i++){
-			lightService.setPixel(i, colorGradient[i][0], colorGradient[i][1], colorGradient[i][2]);
+			lightService.setPixel(i+1, colorGradient[i][0], colorGradient[i][1], colorGradient[i][2]);
 		}
 
 		lightService.send();
