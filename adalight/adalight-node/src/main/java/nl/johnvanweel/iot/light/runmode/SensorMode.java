@@ -2,6 +2,7 @@ package nl.johnvanweel.iot.light.runmode;
 
 import com.hazelcast.core.EntryEvent;
 import com.hazelcast.core.EntryListener;
+import nl.johnvanweel.iot.access.cluster.listener.DefaultEntryListener;
 import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.IlluminationGroupMessage;
 import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunModes;
 import nl.johnvanweel.iot.light.step.SettableGradient;
@@ -16,7 +17,7 @@ import javax.annotation.PostConstruct;
 /**
  * Displays all colors
  */
-public class SensorMode extends RunMode implements EntryListener<String, SensorReading> {
+public class SensorMode extends RunMode implements DefaultEntryListener<String, SensorReading> {
 	private final Logger log = Logger.getLogger(SensorMode.class);
 
     public static final String RUNMODE = RunModes.SENSOR.getName();
@@ -58,20 +59,5 @@ public class SensorMode extends RunMode implements EntryListener<String, SensorR
 		int value = (int) (event.getValue().getValue()*20/100);
 		log.info("Setting new value " + value);
 		sensor.setGradientStep(value);
-	}
-
-	@Override
-	public void entryRemoved(EntryEvent<String, SensorReading> event) {
-
-	}
-
-	@Override
-	public void entryUpdated(EntryEvent<String, SensorReading> event) {
-
-	}
-
-	@Override
-	public void entryEvicted(EntryEvent<String, SensorReading> event) {
-
 	}
 }
