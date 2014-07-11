@@ -1,24 +1,29 @@
 var devicesApp = angular.module('devicesApp', [
     'ngRoute',
-    'devicesControllers'
+    'devicesControllers',
+    'mainControl',
+    'lightsControl'
 ]);
 
 devicesApp.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
-            when('/devices', {
+            when('/index', {
+                templateUrl: '/application/partials/main.html',
+                controller: 'MainCtrl'
+            }). when('/devices', {
                 templateUrl: '/application/partials/device-list.html',
                 controller: 'DeviceListCtrl'
             }).
             when('/devices/:name', {
-                templateUrl: 'application/partials/device-detail.html',
+                templateUrl: 'application/partials/lights.html',
                 controller: 'DeviceDetailCtrl'
             }).
-            when('/devices/:name/Light', {
-                templateUrl: 'application/partials/device-detail.html',
-                controller: 'DeviceDetailCtrl'
+            when('/devices/:name/Lights', {
+                templateUrl: 'application/partials/lights.html',
+                controller: 'LightsCtrl'
             }).
             otherwise({
-                redirectTo: '/devices'
+                redirectTo: '/index'
             });
     }]);

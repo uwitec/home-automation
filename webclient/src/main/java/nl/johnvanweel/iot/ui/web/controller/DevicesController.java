@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/devices")
-public class NodeController {
+public class DevicesController {
     private final AvailableDevicesService service;
 
     @Autowired
-    public NodeController(final AvailableDevicesService service) {
+    public DevicesController(final AvailableDevicesService service) {
         this.service = service;
     }
 

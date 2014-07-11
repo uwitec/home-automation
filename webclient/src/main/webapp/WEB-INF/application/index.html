@@ -2,17 +2,54 @@
 <html lang="en" ng-app="devicesApp">
 <head>
     <meta charset="utf-8">
-    <title>HAL Controller</title>
+    <title>Mr. Data</title>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/lcars.css">
     <script src="lib/js/angular.js"></script>
+    <script src="lib/js/jquery.js"></script>
+    <script src="lib/js/lcars.js"></script>
     <script src="lib/js/angular-route.js"></script>
+    <script src="lib/js/bootstrap.js"></script>
+    <script src="lib/js/fastclick.js"></script>
     <script src="application/controller/devicesController.js"></script>
+    <script src="application/controller/lightsController.js"></script>
+    <script src="application/controller/mainController.js"></script>
     <script src="application/app.js"></script>
 </head>
-<body>
+<body id="fastclick">
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div id="nav" class="span2">
+            <ul>
+                <li class="nav-a">
+                    LCARS UI 0.1
+                    <div class="hr-top">
+                        <div class="hr-block"></div>
+                    </div>
+                </li>
+                <li class="nav-c expandable" id="selected"><a href="#/devices">Devices</a> <div class="hr-bottom"><div class="hr-block"></div></div></li>
+                <li class="nav-d expandable"><a href="#/index">Data</a></li>
+                <li class="nav-f expandable"><a href="#/index">Information</a></li>
+            </ul>
+        </div>
+        <div id="top" class="span10">
+            <!--http://nightwing1975.deviantart.com/art/Star-Trek-Data-351354126-->
+            <img src="images/data.png" class="span2" style="width: 100px;"/>
+            <div id="lcars">
+                <h1>Mr. Data 0.1</h1>
+                <p>Make it so.</p>
+            </div>
+        </div>
 
-<div ng-view></div>
+
+        <div id="main" class="span10"> <div ng-view></div></div>
+
+
+    </div>
+</div>
+</div>
+
 
 </body>
 </html>

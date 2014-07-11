@@ -5,6 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <import resource="classpath*:META-INF/spring/cluster.xml"/>
+    <import resource="classpath*:sensor-context.xml"/>
     <bean class="nl.johnvanweel.iot.capability.ClusterAwareCapability"/>
 
     <context:component-scan base-package="nl.johnvanweel.iot.service"/>

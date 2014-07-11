@@ -1,0 +1,14 @@
+<div class="headline">
+    <span class="h3">Light controls of {{device.name}}</span>
+</div>
+
+
+<div ng-repeat="capability in device.capabilities">
+    <div ng-repeat="runmode in capability.runModeses" style="display:flex" >
+        <div class="span2 btn btn-round-left" ng-click="setRunmode(runmode)">{{runmode}}</div>
+        <div class="span2 btn" ng-click="setColor('ff0000')">red</div>
+        <div class="span2 btn" ng-click="setColor('00ff00')">blue</div>
+        <div class="span2 btn" ng-click="setColor('0000ff')">green</div>
+        <div class="span1 btn btn-round-right">&nbsp;   </div>
+    </div>
+</div>
