@@ -6,5 +6,5 @@ package nl.johnvanweel.iot.sensornetwork;
  * Time: 1:50 PM
  */
 public enum SensorType {
-	TEMPERATURE;
+	TEMPERATURE, LIGHT;
 }

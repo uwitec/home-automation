@@ -12,6 +12,22 @@
     <artifactId>sensor-network</artifactId>
     <dependencies>
         <dependency>
+            <groupId>com.rapplogic</groupId>
+            <artifactId>xbee-api</artifactId>
+            <version>0.9</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/xbee-api-0.9.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>rxtx</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/RXTXcomm.jar</systemPath>
+        </dependency>
+
+        <dependency>
             <groupId>nl.johnvanweel.iot</groupId>
             <artifactId>cluster-communication</artifactId>
             <version>1.0.0-SNAPSHOT</version>
