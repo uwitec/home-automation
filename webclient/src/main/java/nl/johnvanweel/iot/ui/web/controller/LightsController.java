@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Controller for interacting with a Lights-capable device
  */
 @Controller
-@RequestMapping("/devices/{device}")
+@RequestMapping("/devices/{device}/Light")
 public class LightsController {
     private final AvailableDevicesService devicesService;
     private final LightsControlService lightsControlService;
@@ -30,7 +30,7 @@ public class LightsController {
      * @param device   device to change
      * @param newColor new color
      */
-    @RequestMapping(value = "Light/color/{newColor}", method = RequestMethod.PUT)
+    @RequestMapping(value = "color/{newColor}", method = RequestMethod.PUT)
     public void changeColor(@PathVariable String device, @PathVariable String newColor) {
         IotNode node = devicesService.getDevice(device);
 
@@ -44,7 +44,7 @@ public class LightsController {
      * @param device  device to change
      * @param newMode new mode
      */
-    @RequestMapping(value = "Light/runmode/{newMode}", method = RequestMethod.PUT)
+    @RequestMapping(value = "runmode/{newMode}", method = RequestMethod.PUT)
     public void changeMode(@PathVariable String device, @PathVariable String newMode) {
         IotNode node = devicesService.getDevice(device);
 

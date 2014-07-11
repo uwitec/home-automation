@@ -7,7 +7,7 @@ import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.clust
 import nl.johnvanweel.iot.light.step.SettableGradient;
 import nl.johnvanweel.iot.sensornetwork.SensorDao;
 import nl.johnvanweel.iot.sensornetwork.SensorReading;
-import nl.johnvanweel.iot.sensornetwork.predicate.TemperatureSensorPredicate;
+import nl.johnvanweel.iot.sensornetwork.predicate.SensorPredicate;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -32,7 +32,7 @@ public class TemperatureSensorMode extends RunMode implements DefaultEntryListen
 
 	@PostConstruct
 	public void registerListener(){
-		sensorDao.addListener(this, TemperatureSensorPredicate.create());
+		sensorDao.addListener(this, SensorPredicate.create());
 	}
 
     @Override

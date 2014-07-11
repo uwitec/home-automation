@@ -2,7 +2,8 @@ var devicesApp = angular.module('devicesApp', [
     'ngRoute',
     'devicesControllers',
     'mainControl',
-    'lightsControl'
+    'lightsControl',
+    'sensorControl'
 ]);
 
 devicesApp.config(['$routeProvider',
@@ -22,6 +23,10 @@ devicesApp.config(['$routeProvider',
             when('/devices/:name/Lights', {
                 templateUrl: 'application/partials/lights.html',
                 controller: 'LightsCtrl'
+            }).
+            when('/sensors', {
+                templateUrl: 'application/partials/sensors.html',
+                controller: 'SensorCtrl'
             }).
             otherwise({
                 redirectTo: '/index'

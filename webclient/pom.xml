@@ -81,6 +81,11 @@
             <artifactId>cluster-communication</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>nl.johnvanweel.iot</groupId>
+            <artifactId>sensor-network</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>

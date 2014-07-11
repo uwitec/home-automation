@@ -1,9 +1,7 @@
 package nl.johnvanweel.iot.sensornetwork;
 
-import com.hazelcast.core.Hazelcast;
-import com.hazelcast.core.HazelcastInstance;
 import nl.johnvanweel.iot.access.cluster.hazelcast.IStorable;
-import nl.johnvanweel.iot.sensornetwork.predicate.TemperatureSensorPredicate;
+import nl.johnvanweel.iot.sensornetwork.predicate.SensorPredicate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import static org.junit.Assert.assertTrue;
 
@@ -39,7 +36,7 @@ public class SensorIntegrationTest {
 			}
 		}
 
-		Set<Map.Entry<String, IStorable>> results = dao.findSensorReadings(TemperatureSensorPredicate.create());
+		Set<Map.Entry<String, IStorable>> results = dao.findSensorReadings(SensorPredicate.createLight());
 
 		final SensorReading lastReading = expectedReading;
 		assertTrue(results.parallelStream().anyMatch(input -> input.getValue().equals(lastReading)));

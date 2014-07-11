@@ -9,22 +9,31 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+
+
     <artifactId>sensor-network</artifactId>
+
+    <repositories>
+        <!--other repositories if any-->
+        <repository>
+            <id>project.local</id>
+            <name>project</name>
+            <url>file:${project.basedir}/repo</url>
+        </repository>
+    </repositories>
+
+
     <dependencies>
         <dependency>
             <groupId>com.rapplogic</groupId>
             <artifactId>xbee-api</artifactId>
             <version>0.9</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/xbee-api-0.9.jar</systemPath>
         </dependency>
 
         <dependency>
             <groupId>javax</groupId>
             <artifactId>rxtx</artifactId>
             <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/RXTXcomm.jar</systemPath>
         </dependency>
 
         <dependency>
