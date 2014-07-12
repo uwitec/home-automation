@@ -1,7 +1,7 @@
 package nl.johnvanweel.iot.light.service;
 
 import com.sun.jna.Pointer;
-import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.junit.Ignore;
 import nl.johnvanweel.iot.light.access.boblight.BobILightService;
 import nl.johnvanweel.iot.light.access.boblight.BoblightDaemon;
 import nl.johnvanweel.iot.light.access.boblight.BoblightDeamonFactory;

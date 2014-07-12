@@ -1,6 +1,6 @@
 package nl.johnvanweel.iot.ui.web.controller;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.junit.Ignore;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
