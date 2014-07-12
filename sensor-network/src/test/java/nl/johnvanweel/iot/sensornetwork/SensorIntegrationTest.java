@@ -1,8 +1,8 @@
 package nl.johnvanweel.iot.sensornetwork;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import nl.johnvanweel.iot.access.cluster.hazelcast.IStorable;
 import nl.johnvanweel.iot.sensornetwork.predicate.SensorPredicate;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
