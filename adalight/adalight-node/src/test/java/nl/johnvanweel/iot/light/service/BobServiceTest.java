@@ -1,6 +1,7 @@
 package nl.johnvanweel.iot.light.service;
 
 import com.sun.jna.Pointer;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import nl.johnvanweel.iot.light.access.boblight.BobILightService;
 import nl.johnvanweel.iot.light.access.boblight.BoblightDaemon;
 import nl.johnvanweel.iot.light.access.boblight.BoblightDeamonFactory;
@@ -15,6 +16,7 @@ import static org.mockito.Mockito.*;
 /**
  *
  */
+@Ignore
 public class BobServiceTest {
     private BobILightService controller;
 

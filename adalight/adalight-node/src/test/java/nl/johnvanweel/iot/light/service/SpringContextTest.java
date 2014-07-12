@@ -1,5 +1,6 @@
 package nl.johnvanweel.iot.light.service;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import nl.johnvanweel.iot.access.cluster.IChannel;
 import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.IlluminationGroupMessage;
 import org.junit.Test;
@@ -13,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/META-INF/spring/access-test.xml", "/META-INF/spring/cluster-access.xml"})
+@Ignore
 public class SpringContextTest {
     @Autowired
     private IChannel channel;

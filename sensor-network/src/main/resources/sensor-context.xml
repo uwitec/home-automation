@@ -7,13 +7,8 @@
 
     <context:annotation-config/>
 
-    <bean class="nl.johnvanweel.iot.sensornetwork.SensorDao"/>
+    <import resource="sensor-client.xml"/>
+    <import resource="sensor-reading.xml"/>
 
-    <bean id="temperatureSensorDataAccess" class="nl.johnvanweel.iot.access.cluster.hazelcast.ClusterDataAccess">
-        <constructor-arg value="temperature-sensor-data"/>
-    </bean>
 
-    <bean class="nl.johnvanweel.iot.sensornetwork.XbeeSensorReader"/>
-
-    <bean class="nl.johnvanweel.iot.sensornetwork.SensorCapability"/>
 </beans>

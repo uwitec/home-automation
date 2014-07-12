@@ -1,5 +1,6 @@
 package nl.johnvanweel.iot.ui.web.controller;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +19,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration("/WEB-INF/mvc-dispatcher-servlet.xml")
+@Ignore
 public class AppTests {
     private MockMvc mockMvc;
 

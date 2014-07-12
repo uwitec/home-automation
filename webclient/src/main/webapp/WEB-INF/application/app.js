@@ -10,10 +10,10 @@ devicesApp.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
             when('/index', {
-                templateUrl: '/application/partials/main.html',
+                templateUrl: 'application/partials/main.html',
                 controller: 'MainCtrl'
             }). when('/devices', {
-                templateUrl: '/application/partials/device-list.html',
+                templateUrl: 'application/partials/device-list.html',
                 controller: 'DeviceListCtrl'
             }).
             when('/devices/:name', {
@@ -29,6 +29,6 @@ devicesApp.config(['$routeProvider',
                 controller: 'SensorCtrl'
             }).
             otherwise({
-                redirectTo: '/index'
+                redirectTo: 'index'
             });
     }]);

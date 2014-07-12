@@ -32,7 +32,7 @@ public class TemperatureSensorMode extends RunMode implements DefaultEntryListen
 
 	@PostConstruct
 	public void registerListener(){
-		sensorDao.addListener(this, SensorPredicate.create());
+		sensorDao.addListener(this, SensorPredicate.createTemperature());
 	}
 
     @Override
