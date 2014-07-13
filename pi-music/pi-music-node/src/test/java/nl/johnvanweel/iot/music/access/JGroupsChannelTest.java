@@ -5,6 +5,7 @@ import org.jgroups.JChannel;
 import org.jgroups.Message;
 import org.jgroups.ReceiverAdapter;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 
@@ -14,6 +15,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 
+@Ignore
 public class JGroupsChannelTest {
     private JGroupsChannel channel;
     private ReceiverAdapter receiverAdapter;
