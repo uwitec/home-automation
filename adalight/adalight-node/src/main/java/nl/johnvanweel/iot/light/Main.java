@@ -17,7 +17,7 @@ public class Main {
 
     public static final void main(String... args) throws InterruptedException {
         List<String> configs = new LinkedList<>();
-        configs.add("classpath:/META-INF/spring/main-context.xml");
+        configs.add("classpath:/META-INF/spring/lights-main-context.xml");
 
         appCtx = new ClassPathXmlApplicationContext(configs.toArray(new String[configs.size()]));
 

@@ -1,8 +1,11 @@
-package nl.johnvanweel.iot.sensornetwork;
+package nl.johnvanweel.iot.sensornetwork.xbee;
 
 import com.rapplogic.xbee.api.XBee;
 import com.rapplogic.xbee.api.XBeeResponse;
 import com.rapplogic.xbee.api.zigbee.ZNetRxIoSampleResponse;
+import nl.johnvanweel.iot.sensornetwork.SensorDao;
+import nl.johnvanweel.iot.sensornetwork.SensorReading;
+import nl.johnvanweel.iot.sensornetwork.SensorType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
