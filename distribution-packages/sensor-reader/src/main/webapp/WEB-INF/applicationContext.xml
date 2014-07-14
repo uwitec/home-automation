@@ -7,7 +7,6 @@
     <import resource="classpath*:META-INF/spring/cluster.xml"/>
     <import resource="classpath*:sensor-context.xml"/>
 
-    <context:component-scan base-package="nl.johnvanweel.iot.service"/>
     <context:annotation-config/>
 
 

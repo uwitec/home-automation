@@ -6,6 +6,8 @@ import nl.johnvanweel.iot.light.service.LightException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.PostConstruct;
+
 
 /**
  * Implementation using the boblight daemon running on the default address.
@@ -14,6 +16,7 @@ public class BobILightService implements ILightService {
 	private final Logger log = Logger.getLogger(BobILightService.class);
 
 	public static final int ALL_PIXELS = -1;
+	private final Thread connectionThread;
 
 	private BoblightDaemon daemon;
 	private Pointer bob;
@@ -22,7 +25,7 @@ public class BobILightService implements ILightService {
 	public BobILightService(final BoblightDeamonFactory factory) {
 		this.daemon = factory.getInstance();
 
-		new Thread(() -> {
+		this.connectionThread = new Thread(() -> {
 			boolean connected = false;
 
 			while (!connected) {
@@ -42,9 +45,16 @@ public class BobILightService implements ILightService {
 					connected = true;
 				}
 			}
-		}).start();
+		});
+
+		connectionThread.start();
 
 		log.debug("Started connection Thread.");
+	}
+
+	@PostConstruct
+	public void postConstruct(){
+		connectionThread.interrupt();
 	}
 
 	@Override
