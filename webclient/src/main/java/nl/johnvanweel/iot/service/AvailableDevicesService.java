@@ -1,6 +1,5 @@
 package nl.johnvanweel.iot.service;
 
-import com.rapplogic.xbee.api.XBeeResponse;
 import nl.johnvanweel.iot.access.cluster.IChannel;
 import nl.johnvanweel.iot.access.cluster.message.IdentifyGroupMessage;
 import nl.johnvanweel.iot.web.model.IotNode;
@@ -33,7 +32,6 @@ public class AvailableDevicesService {
 
     public void add(IotNode iotNode) {
         logger.info("Adding device " + iotNode.getName());
-		XBeeResponse r;
         knownDevices.put(iotNode.getName(), iotNode);
     }
 
