@@ -8,6 +8,7 @@ import com.hazelcast.query.Predicate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.Map;
 import java.util.Set;
 
@@ -33,6 +34,11 @@ public class ClusterDataAccess {
 		hazelcastInstance = Hazelcast.newHazelcastInstance();
 
 		dataMap = hazelcastInstance.getMap(mapName);
+	}
+
+	@PreDestroy
+	public void preDestroy(){
+		hazelcastInstance.shutdown();
 	}
 
 	public void store(final IStorable storable){

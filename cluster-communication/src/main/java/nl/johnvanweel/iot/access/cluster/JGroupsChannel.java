@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 /**
  * Created by john on 11/17/13.
@@ -33,6 +34,12 @@ public class JGroupsChannel implements IChannel {
         channel.setReceiver(receiverAdapter);
         channel.connect(clusterName);
     }
+
+	@PreDestroy
+	public void preDestroy(){
+		channel.disconnect();
+		channel.close();
+	}
 
     @Override
     public void broadcast(GroupMessage message) {
