@@ -5,9 +5,9 @@
         <name>dev</name>
         <password>dev-pass</password>
     </group>
-    <management-center enabled="true">
-        http://192.168.1.16:8080/hazelcast
-    </management-center>
+    <!--<management-center enabled="true">-->
+        <!--http://192.168.1.16:8080/hazelcast-->
+    <!--</management-center>-->
     <network>
         <port auto-increment="true">5701</port>
         <join>
