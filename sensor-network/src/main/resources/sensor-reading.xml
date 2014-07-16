@@ -2,7 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean class="nl.johnvanweel.iot.sensornetwork.xbee.XbeeSensorReader"/>
+    <bean class="nl.johnvanweel.iot.sensornetwork.xbee.XbeeSensorReader">
+        <property name="serialPort" value="/dev/ttyUSB0"/>
+        <property name="serialBaudRate" value="9600"/>
+    </bean>
+
+    <bean class="nl.johnvanweel.iot.sensornetwork.xbee.DataStoringXbeeSerialSamplePacketListener"/>
+    <bean class="com.rapplogic.xbee.api.XBee"/>
 
     <bean class="nl.johnvanweel.iot.sensornetwork.SensorCapability"/>
 </beans>

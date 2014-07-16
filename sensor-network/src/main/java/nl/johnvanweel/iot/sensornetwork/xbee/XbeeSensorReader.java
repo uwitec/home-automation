@@ -1,19 +1,13 @@
 package nl.johnvanweel.iot.sensornetwork.xbee;
 
 import com.rapplogic.xbee.api.XBee;
-import com.rapplogic.xbee.api.XBeeResponse;
-import com.rapplogic.xbee.api.zigbee.ZNetRxIoSampleResponse;
-import gnu.io.CommPortIdentifier;
-import nl.johnvanweel.iot.sensornetwork.SensorDao;
-import nl.johnvanweel.iot.sensornetwork.SensorReading;
-import nl.johnvanweel.iot.sensornetwork.SensorType;
+import com.rapplogic.xbee.api.XBeeException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.lang.annotation.Native;
 
 /**
  *
@@ -22,37 +16,41 @@ import java.lang.annotation.Native;
 public class XbeeSensorReader {
 	private final Logger log = Logger.getLogger(XbeeSensorReader.class);
 
-	private final SensorDao dao;
 
-	private XBee xBee = new XBee();
+	private final XBee xBee;
+	private final DataStoringXbeeSerialSamplePacketListener listener;
+
+	private String serialPort = "/dev/ttyUSB0";
+	private int serialBaudRate = 9600;
 
 	@Autowired
-	public XbeeSensorReader(SensorDao dao) {
-		this.dao = dao;
+	public XbeeSensorReader(XBee xBee, DataStoringXbeeSerialSamplePacketListener listener) {
+		this.xBee = xBee;
+		this.listener = listener;
 	}
 
 	@PostConstruct
 	public void startSensorReceiverThread() {
 		try {
-			xBee.open("/dev/ttyUSB0", 9600);
-
-			xBee.addPacketListener(response -> {
-				ZNetRxIoSampleResponse response1 = (ZNetRxIoSampleResponse) response;
-				System.out.println("==========================================================");
-				dao.storeSensorReading(new SensorReading(System.currentTimeMillis(), response1.getAnalog1(), "Light", SensorType.LIGHT));
-				dao.storeSensorReading(new SensorReading(System.currentTimeMillis(), response1.getAnalog0(), "Temperature", SensorType.TEMPERATURE));
-				System.out.println(response1.getAnalog0());
-				System.out.println(response1.getAnalog1());
-				System.out.println("==========================================================");
-
-			});
-		} catch (Exception e) {
+			xBee.open(serialPort, serialBaudRate);
+		} catch (XBeeException e) {
+			log.warn("Cannot open XBee.", e);
 			e.printStackTrace();
 		}
+
+		xBee.addPacketListener(listener);
 	}
 
 	@PreDestroy
 	public void preDestroy() {
 		xBee.close();
+	}
+
+	public void setSerialPort(String serialPort) {
+		this.serialPort = serialPort;
+	}
+
+	public void setSerialBaudRate(int serialBaudRate) {
+		this.serialBaudRate = serialBaudRate;
 	}
 }
