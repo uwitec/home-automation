@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <name>light-control</name>
     <artifactId>light-control</artifactId>
     <packaging>war</packaging>
 
@@ -37,4 +38,8 @@
              <artifactId>spring-webmvc</artifactId>
          </dependency>
      </dependencies>
+
+    <build>
+        <finalName>light-control</finalName>
+    </build>
 </project>

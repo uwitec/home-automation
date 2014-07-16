@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <name>sensor-reader</name>
     <artifactId>sensor-reader</artifactId>
     <packaging>war</packaging>
 
@@ -43,4 +44,8 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>sensor-reader</finalName>
+    </build>
 </project>
