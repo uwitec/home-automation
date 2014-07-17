@@ -5,7 +5,6 @@ import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import com.hazelcast.query.Predicate;
-import nl.johnvanweel.iot.access.cluster.message.NodeIdentification;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 

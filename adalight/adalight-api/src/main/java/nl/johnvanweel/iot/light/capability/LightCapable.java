@@ -1,6 +1,6 @@
 package nl.johnvanweel.iot.light.capability;
 
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunMode;
+import nl.johnvanweel.iot.light.api.RunMode;
 
 /**
  * Device is capable of displaying light

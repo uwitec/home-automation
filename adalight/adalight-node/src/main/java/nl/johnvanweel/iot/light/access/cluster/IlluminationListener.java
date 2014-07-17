@@ -2,12 +2,9 @@ package nl.johnvanweel.iot.light.access.cluster;
 
 import com.hazelcast.core.EntryEvent;
 import nl.johnvanweel.iot.access.cluster.listener.DefaultEntryListener;
-import nl.johnvanweel.iot.access.cluster.listener.IMessageListener;
 import nl.johnvanweel.iot.light.LightChangeCommand;
 import nl.johnvanweel.iot.light.api.LightsBusiness;
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.IlluminationGroupMessage;
 import nl.johnvanweel.iot.light.runmode.RunModeControl;
-import org.jgroups.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;

@@ -1,11 +1,11 @@
 package nl.johnvanweel.iot.light.service;
 
 import com.sun.jna.Pointer;
-import org.junit.Ignore;
 import nl.johnvanweel.iot.light.access.boblight.BobILightService;
 import nl.johnvanweel.iot.light.access.boblight.BoblightDaemon;
 import nl.johnvanweel.iot.light.access.boblight.BoblightDeamonFactory;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.mockito.AdditionalMatchers.aryEq;

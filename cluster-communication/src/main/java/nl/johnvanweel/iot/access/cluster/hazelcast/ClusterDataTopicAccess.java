@@ -1,14 +1,13 @@
 package nl.johnvanweel.iot.access.cluster.hazelcast;
 
-import com.hazelcast.core.*;
-import com.hazelcast.query.Predicate;
+import com.hazelcast.core.Hazelcast;
+import com.hazelcast.core.HazelcastInstance;
+import com.hazelcast.core.ITopic;
+import com.hazelcast.core.MessageListener;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * User: jvweel

@@ -1,6 +1,6 @@
 package nl.johnvanweel.iot.ui.web.controller;
 
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunMode;
+import nl.johnvanweel.iot.light.api.RunMode;
 import nl.johnvanweel.iot.service.AvailableDevicesService;
 import nl.johnvanweel.iot.service.LightsControlService;
 import nl.johnvanweel.iot.web.model.IotNode;

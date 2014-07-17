@@ -1,7 +1,7 @@
 package nl.johnvanweel.iot.light;
 
 import nl.johnvanweel.iot.access.cluster.hazelcast.IStorable;
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunMode;
+import nl.johnvanweel.iot.light.api.RunMode;
 
 import java.util.UUID;
 

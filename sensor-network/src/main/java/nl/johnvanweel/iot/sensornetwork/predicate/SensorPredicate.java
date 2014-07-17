@@ -3,7 +3,6 @@ package nl.johnvanweel.iot.sensornetwork.predicate;
 import com.hazelcast.query.EntryObject;
 import com.hazelcast.query.Predicate;
 import com.hazelcast.query.PredicateBuilder;
-import nl.johnvanweel.iot.sensornetwork.SensorReading;
 import nl.johnvanweel.iot.sensornetwork.SensorType;
 
 

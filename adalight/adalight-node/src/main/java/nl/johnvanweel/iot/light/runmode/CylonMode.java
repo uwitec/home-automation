@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Displays all colors
  */
 public class CylonMode extends nl.johnvanweel.iot.light.runmode.RunMode {
-    public static final String RUNMODE = nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunMode.CYLON.getName();
+    public static final String RUNMODE = nl.johnvanweel.iot.light.api.RunMode.CYLON.getName();
 
     private final Cylon spectrum;
 

@@ -3,7 +3,6 @@ package nl.johnvanweel.iot.light.api;
 import nl.johnvanweel.iot.access.cluster.hazelcast.ClusterDataMapAccess;
 import nl.johnvanweel.iot.access.cluster.listener.DefaultEntryListener;
 import nl.johnvanweel.iot.light.LightChangeCommand;
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunMode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 

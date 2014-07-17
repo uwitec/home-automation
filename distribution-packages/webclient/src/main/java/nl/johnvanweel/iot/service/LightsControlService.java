@@ -1,10 +1,6 @@
 package nl.johnvanweel.iot.service;
 
-import nl.johnvanweel.iot.access.cluster.IChannel;
 import nl.johnvanweel.iot.light.api.LightsBusiness;
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.IlluminationGroupMessage;
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunMode;
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunmodeGroupMessage;
 import nl.johnvanweel.iot.web.model.IotNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,13 +10,10 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class LightsControlService {
-    private final IChannel channel;
-
 	private final LightsBusiness lightsBusiness;
 
     @Autowired
-    public LightsControlService(IChannel channel, LightsBusiness lightsBusiness) {
-        this.channel = channel;
+    public LightsControlService(LightsBusiness lightsBusiness) {
 		this.lightsBusiness = lightsBusiness;
 	}
 

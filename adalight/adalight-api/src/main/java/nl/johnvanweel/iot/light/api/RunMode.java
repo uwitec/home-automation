@@ -1,4 +1,4 @@
-package nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster;
+package nl.johnvanweel.iot.light.api;
 
 /**
  * Defines all known runmodes

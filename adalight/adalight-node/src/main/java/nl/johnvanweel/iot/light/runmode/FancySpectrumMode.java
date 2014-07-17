@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Runmode for the 'fancy' spectrum changer
  */
 public class FancySpectrumMode extends nl.johnvanweel.iot.light.runmode.RunMode {
-    public static final String RUNMODE = nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunMode.SPECTRUM_2.getName();
+    public static final String RUNMODE = nl.johnvanweel.iot.light.api.RunMode.SPECTRUM_2.getName();
 
     private final FancySpectrum spectrum;
 

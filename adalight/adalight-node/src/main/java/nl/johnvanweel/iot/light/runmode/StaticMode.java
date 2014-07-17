@@ -1,6 +1,5 @@
 package nl.johnvanweel.iot.light.runmode;
 
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.MyIllumiGM;
 import nl.johnvanweel.iot.light.service.ILightService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -8,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Only accepts reconfiguration messages, resulting in a non-changing light.
  */
 public class StaticMode extends nl.johnvanweel.iot.light.runmode.RunMode {
-    public static final String RUNMODE = nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunMode.STATIC.getName();
+    public static final String RUNMODE = nl.johnvanweel.iot.light.api.RunMode.STATIC.getName();
 
     private final ILightService lightService;
 

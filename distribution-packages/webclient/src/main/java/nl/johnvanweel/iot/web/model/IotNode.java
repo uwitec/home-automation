@@ -1,7 +1,6 @@
 package nl.johnvanweel.iot.web.model;
 
 import nl.johnvanweel.iot.access.cluster.capabilities.Capability;
-import org.jgroups.Address;
 
 /**
  * Represents a device on the network

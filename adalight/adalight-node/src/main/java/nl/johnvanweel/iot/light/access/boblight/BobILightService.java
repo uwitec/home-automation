@@ -2,11 +2,9 @@ package nl.johnvanweel.iot.light.access.boblight;
 
 import com.sun.jna.Pointer;
 import nl.johnvanweel.iot.light.service.ILightService;
-import nl.johnvanweel.iot.light.service.LightException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 

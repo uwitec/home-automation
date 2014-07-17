@@ -20,10 +20,10 @@ public class SensorDataBusiness {
 	}
 
 	public void addListener(DefaultEntryListener<?, ?> listener, SensorType sensorType) {
-	   sensorDao.registerListener(listener, SensorPredicate.create(sensorType));
+		sensorDao.registerListener(listener, SensorPredicate.create(sensorType));
 	}
 
-	public void store(SensorReading sensorReading){
+	public void store(SensorReading sensorReading) {
 		sensorDao.store(sensorReading);
 	}
 }
