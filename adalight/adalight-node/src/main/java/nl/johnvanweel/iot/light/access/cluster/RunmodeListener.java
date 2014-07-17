@@ -1,33 +1,42 @@
 package nl.johnvanweel.iot.light.access.cluster;
 
-import nl.johnvanweel.iot.access.cluster.listener.IMessageListener;
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunmodeGroupMessage;
+import com.hazelcast.core.EntryEvent;
+import nl.johnvanweel.iot.access.cluster.listener.DefaultEntryListener;
+import nl.johnvanweel.iot.light.LightChangeCommand;
+import nl.johnvanweel.iot.light.api.LightsBusiness;
 import nl.johnvanweel.iot.light.runmode.RunModeControl;
-import org.jgroups.Message;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.PostConstruct;
 
 /**
  * Listens to IlluminationGroupMessage. This will read the new light value from the message and
  * set it.
  */
-public class RunmodeListener implements IMessageListener {
-    private final RunModeControl control;
+public class RunmodeListener implements DefaultEntryListener<String, LightChangeCommand> {
+	private Logger log = Logger.getLogger(RunmodeListener.class);
 
-    @Autowired
-    public RunmodeListener(final RunModeControl runmodeControl) {
-        this.control = runmodeControl;
-    }
+	private final RunModeControl control;
+	private final LightsBusiness business;
 
+	@Autowired
+	public RunmodeListener(final RunModeControl runmodeControl, LightsBusiness business) {
+		this.control = runmodeControl;
+		this.business = business;
+	}
 
-    @Override
-    public boolean canHandle(Message message) {
-        return message.getObject() instanceof RunmodeGroupMessage;
-    }
+	@PostConstruct
+	public void addListener() {
+		business.addListener(this);
+	}
 
-    @Override
-    public void handle(Message message) {
-        RunmodeGroupMessage groupMessage = (RunmodeGroupMessage) message.getObject();
+	@Override
+	public void entryAdded(EntryEvent<String, LightChangeCommand> event) {
+		log.info("Received command " + event);
 
-        control.start(groupMessage);
-    }
+		if (event.getValue().getRunMode() != null) {
+			control.start(event.getValue().getRunMode().toString());
+		}
+	}
 }

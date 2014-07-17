@@ -1,15 +1,16 @@
 package nl.johnvanweel.iot.access.cluster.message;
 
 import nl.johnvanweel.iot.access.cluster.capabilities.Capability;
+import nl.johnvanweel.iot.access.cluster.hazelcast.IStorable;
 
 /**
  * Response to Identification request.
  */
-public class IdentifyResponseMessage extends GroupMessage {
+public class NodeIdentification implements IStorable {
     private String host;
     private Capability[] capabilities;
 
-    public IdentifyResponseMessage(String host, Capability... capabilities) {
+    public NodeIdentification(String host, Capability... capabilities) {
         this.host = host;
         this.capabilities = capabilities;
     }
@@ -29,4 +30,9 @@ public class IdentifyResponseMessage extends GroupMessage {
     public void setCapabilities(Capability[] capabilities) {
         this.capabilities = capabilities;
     }
+
+	@Override
+	public String getKey() {
+		return host;
+	}
 }

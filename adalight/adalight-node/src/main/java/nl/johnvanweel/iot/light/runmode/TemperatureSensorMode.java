@@ -2,12 +2,10 @@ package nl.johnvanweel.iot.light.runmode;
 
 import com.hazelcast.core.EntryEvent;
 import nl.johnvanweel.iot.access.cluster.listener.DefaultEntryListener;
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.IlluminationGroupMessage;
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunModes;
 import nl.johnvanweel.iot.light.step.SettableGradient;
-import nl.johnvanweel.iot.sensornetwork.SensorDao;
 import nl.johnvanweel.iot.sensornetwork.SensorReading;
-import nl.johnvanweel.iot.sensornetwork.predicate.SensorPredicate;
+import nl.johnvanweel.iot.sensornetwork.SensorType;
+import nl.johnvanweel.iot.sensornetwork.business.SensorDataBusiness;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,23 +14,23 @@ import javax.annotation.PostConstruct;
 /**
  * Displays all colors
  */
-public class TemperatureSensorMode extends RunMode implements DefaultEntryListener<String, SensorReading> {
+public class TemperatureSensorMode extends nl.johnvanweel.iot.light.runmode.RunMode implements DefaultEntryListener<String, SensorReading> {
 	private final Logger log = Logger.getLogger(TemperatureSensorMode.class);
 
-    public static final String RUNMODE = RunModes.SENSOR.getName();
+    public static final String RUNMODE = nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunMode.SENSOR.getName();
 
     private final SettableGradient sensor;
-	private final SensorDao sensorDao;
+	private final SensorDataBusiness sensorDataBusiness;
 
     @Autowired
-    public TemperatureSensorMode(final SettableGradient sensor, final SensorDao sensorDao) {
+    public TemperatureSensorMode(final SettableGradient sensor, final SensorDataBusiness sensorDataBusiness) {
         this.sensor = sensor;
-		this.sensorDao = sensorDao;
+		this.sensorDataBusiness = sensorDataBusiness;
 	}
 
 	@PostConstruct
 	public void registerListener(){
-		sensorDao.addListener(this, SensorPredicate.createTemperature());
+		sensorDataBusiness.addListener(this, SensorType.TEMPERATURE);
 	}
 
     @Override
@@ -46,7 +44,7 @@ public class TemperatureSensorMode extends RunMode implements DefaultEntryListen
     }
 
     @Override
-    protected void reconfigure(IlluminationGroupMessage message) {
+    protected void reconfigure(int[] message) {
 
     }
 

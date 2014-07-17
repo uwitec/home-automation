@@ -1,15 +1,13 @@
 package nl.johnvanweel.iot.light.runmode;
 
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.IlluminationGroupMessage;
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunModes;
 import nl.johnvanweel.iot.light.step.FancySpectrum;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Runmode for the 'fancy' spectrum changer
  */
-public class FancySpectrumMode extends RunMode {
-    public static final String RUNMODE = RunModes.SPECTRUM_2.getName();
+public class FancySpectrumMode extends nl.johnvanweel.iot.light.runmode.RunMode {
+    public static final String RUNMODE = nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunMode.SPECTRUM_2.getName();
 
     private final FancySpectrum spectrum;
 
@@ -29,7 +27,7 @@ public class FancySpectrumMode extends RunMode {
     }
 
     @Override
-    protected void reconfigure(IlluminationGroupMessage message) {
+    protected void reconfigure(int[] message) {
 
     }
 }

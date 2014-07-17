@@ -1,7 +1,6 @@
 package nl.johnvanweel.iot.light.step;
 
 import nl.johnvanweel.iot.light.service.ILightService;
-import nl.johnvanweel.iot.sensornetwork.SensorDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -32,7 +31,6 @@ public class SettableGradient implements Steppable {
 	}
 
 	public void setGradientStep(int gradientStep) {
-		System.out.println("SETTING TO " + colorGradient[gradientStep][0] + ", " + colorGradient[gradientStep][1] + ", " + colorGradient[gradientStep][2]);
 		this.gradientStep = gradientStep;
 	}
 }

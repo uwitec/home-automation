@@ -1,7 +1,9 @@
 package nl.johnvanweel.iot.service;
 
 import nl.johnvanweel.iot.access.cluster.IChannel;
+import nl.johnvanweel.iot.light.api.LightsBusiness;
 import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.IlluminationGroupMessage;
+import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunMode;
 import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunmodeGroupMessage;
 import nl.johnvanweel.iot.web.model.IotNode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,13 @@ import org.springframework.stereotype.Component;
 public class LightsControlService {
     private final IChannel channel;
 
+	private final LightsBusiness lightsBusiness;
+
     @Autowired
-    public LightsControlService(IChannel channel) {
+    public LightsControlService(IChannel channel, LightsBusiness lightsBusiness) {
         this.channel = channel;
-    }
+		this.lightsBusiness = lightsBusiness;
+	}
 
     /**
      * Changes the color of the light
@@ -34,16 +39,16 @@ public class LightsControlService {
         int green = Integer.decode("0x" + newColor.substring(2, 4));
         int blue = Integer.decode("0x" + newColor.substring(4, 6));
 
-        channel.sendTo(node.getAddress(), new IlluminationGroupMessage(new int[]{red, green, blue}));
+
+		lightsBusiness.changeColor(new int[]{red, green, blue});
     }
 
     /**
      * TODO: Sanitize input
      *
-     * @param node
-     * @param newMode
-     */
-    public void changeMode(IotNode node, String newMode) {
-        channel.sendTo(node.getAddress(), new RunmodeGroupMessage(newMode));
+	 * @param newMode
+	 */
+    public void changeMode(String newMode) {
+		lightsBusiness.changeMode(newMode);
     }
 }

@@ -1,10 +1,10 @@
 package nl.johnvanweel.iot.service;
 
-import com.hazelcast.core.EntryAdapter;
 import com.hazelcast.core.EntryEvent;
-import nl.johnvanweel.iot.sensornetwork.SensorDao;
+import nl.johnvanweel.iot.access.cluster.listener.DefaultEntryListener;
 import nl.johnvanweel.iot.sensornetwork.SensorReading;
-import nl.johnvanweel.iot.sensornetwork.predicate.SensorPredicate;
+import nl.johnvanweel.iot.sensornetwork.SensorType;
+import nl.johnvanweel.iot.sensornetwork.business.SensorDataBusiness;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,23 +15,23 @@ import javax.annotation.PostConstruct;
  * This service sends a Lights-change message to the Light-capable device.
  */
 @Component
-public class SensorControlService extends EntryAdapter<String, SensorReading> {
+public class SensorControlService implements DefaultEntryListener<String, SensorReading> {
 	private final Logger log = Logger.getLogger(SensorControlService.class);
 
-	private final SensorDao sensorDao;
+	private final SensorDataBusiness sensorDao;
 
 	private SensorReading temperatureEntry;
 	private SensorReading lightEntry;
 
 	@Autowired
-	public SensorControlService(final SensorDao sensorDao) {
-		this.sensorDao = sensorDao;
+	public SensorControlService(final SensorDataBusiness sensorDataBusiness) {
+		this.sensorDao = sensorDataBusiness;
 	}
 
 	@PostConstruct
 	public void registerListener() {
-		sensorDao.addListener(this, SensorPredicate.createLight());
-		sensorDao.addListener(this, SensorPredicate.createTemperature());
+		sensorDao.addListener(this, SensorType.LIGHT);
+		sensorDao.addListener(this, SensorType.TEMPERATURE);
 	}
 
 	@Override

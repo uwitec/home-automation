@@ -13,16 +13,9 @@ import nl.johnvanweel.iot.sensornetwork.SensorType;
  * Time: 2:00 PM
  */
 public class SensorPredicate {
-	public static Predicate createLight(){
+	public static Predicate create(SensorType type){
 		EntryObject e = new PredicateBuilder().getEntryObject();
-		Predicate predicate = e.get("sensorType").equal(SensorType.LIGHT);
-
-		return predicate;
-	}
-
-	public static Predicate createTemperature(){
-		EntryObject e = new PredicateBuilder().getEntryObject();
-		Predicate predicate = e.get("sensorType").equal(SensorType.TEMPERATURE);
+		Predicate predicate = e.get("sensorType").equal(type);
 
 		return predicate;
 	}

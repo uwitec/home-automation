@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 
 /**
@@ -52,7 +53,7 @@ public class BobILightService implements ILightService {
 		log.debug("Started connection Thread.");
 	}
 
-	@PostConstruct
+	@PreDestroy
 	public void postConstruct(){
 		connectionThread.interrupt();
 	}

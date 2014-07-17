@@ -1,11 +1,10 @@
 package nl.johnvanweel.iot.light.runmode;
 
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.IlluminationGroupMessage;
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunmodeGroupMessage;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -32,39 +31,45 @@ public class RunModeControl {
         start(defaultMode);
     }
 
+	@PreDestroy
+	public void preDestroy(){
+		currentModeThread.interrupt();
+	}
+
     /**
      * Finds the node contained in the message and starts it. If no matches found, it will start the default.
      *
-     * @param groupMessage message
+     * @param mode message
      */
-    public void start(final RunmodeGroupMessage groupMessage) {
+    public void start(final String mode) {
         start(
                 modes.parallelStream()
-                        .filter(matchMode(groupMessage))
+                        .filter(matchMode(mode))
                         .findAny()
                         .orElse(defaultMode)
         );
     }
 
+	public void start(RunMode mode) {
+		stopCurrentMode();
+		startNewMode(mode);
+	}
+
     /**
      * Reconfigure the currently running mode.
      *
-     * @param message message
-     */
-    public void reconfigure(IlluminationGroupMessage message) {
+	 * @param message message
+	 */
+    public void reconfigure(int[] message) {
         currentMode.reconfigure(message);
     }
 
-    private Predicate<? super RunMode> matchMode(RunmodeGroupMessage groupMessage) {
-        return e -> e.identify().equalsIgnoreCase(groupMessage.getMode());
-    }
-
-    private void start(RunMode mode) {
-        stopCurrentMode();
-        startNewMode(mode);
+    private Predicate<? super RunMode> matchMode(String mode) {
+        return e -> e.identify().equalsIgnoreCase(mode);
     }
 
     private void startNewMode(final RunMode mode) {
+		logger.info("Starting with new mode " + mode);
         currentMode = mode;
         currentMode.start();
 

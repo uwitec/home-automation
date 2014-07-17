@@ -6,26 +6,15 @@
 
     <import resource="classpath*:META-INF/spring/cluster.xml"/>
     <import resource="classpath*:sensor-client.xml"/>
-    <bean class="nl.johnvanweel.iot.capability.ClusterAwareCapability"/>
+    <import resource="classpath*:lights-api.xml"/>
+
+
+    <bean class="nl.johnvanweel.iot.access.cluster.capabilities.Capability">
+        <constructor-arg index="0" value="ClusterAware"/>
+        <constructor-arg index="1" value="Can become aware of the cluster."/>
+
+    </bean>
 
     <context:component-scan base-package="nl.johnvanweel.iot.service"/>
     <context:annotation-config/>
-
-    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <property name="targetObject" ref="availableDevicesService"/>
-        <property name="targetMethod" value="reload"/>
-    </bean>
-
-    <bean id="lightsUpdateTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-        <property name="jobDetail" ref="jobDetail"/>
-        <property name="cronExpression" value="0/10 * * * * ?"/>
-    </bean>
-
-    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-        <property name="triggers">
-            <list>
-                <ref bean="lightsUpdateTrigger"/>
-            </list>
-        </property>
-    </bean>
 </beans>

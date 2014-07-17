@@ -1,6 +1,5 @@
 package nl.johnvanweel.iot.light.runmode;
 
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.IlluminationGroupMessage;
 import org.apache.log4j.Logger;
 
 
@@ -56,9 +55,9 @@ public abstract class RunMode implements Runnable {
     /**
      * Reconfigures the RunMode with the new parameters
      *
-     * @param message parameters
-     */
-    protected abstract void reconfigure(IlluminationGroupMessage message);
+	 * @param message parameters
+	 */
+    protected abstract void reconfigure(int[] message);
 
     public int getSpeed() {
         return speed;

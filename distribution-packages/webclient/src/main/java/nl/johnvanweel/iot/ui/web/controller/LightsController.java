@@ -1,5 +1,6 @@
 package nl.johnvanweel.iot.ui.web.controller;
 
+import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunMode;
 import nl.johnvanweel.iot.service.AvailableDevicesService;
 import nl.johnvanweel.iot.service.LightsControlService;
 import nl.johnvanweel.iot.web.model.IotNode;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Controller for interacting with a Lights-capable device
@@ -48,7 +50,15 @@ public class LightsController {
     public void changeMode(@PathVariable String device, @PathVariable String newMode) {
         IotNode node = devicesService.getDevice(device);
 
-        lightsControlService.changeMode(node, newMode);
+        lightsControlService.changeMode(newMode);
     }
+
+	@RequestMapping(value = "information", method = RequestMethod.GET)
+	@ResponseBody
+	public RunMode[] getAvailableRunmodes() {
+		return RunMode.values();
+	}
+
+
 
 }

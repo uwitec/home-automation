@@ -1,45 +1,41 @@
 package nl.johnvanweel.iot.service;
 
-import nl.johnvanweel.iot.access.cluster.IChannel;
-import nl.johnvanweel.iot.access.cluster.message.IdentifyGroupMessage;
+import nl.johnvanweel.iot.access.cluster.business.ClusterBusiness;
+import nl.johnvanweel.iot.access.cluster.listener.DefaultEntryListener;
+import nl.johnvanweel.iot.access.cluster.message.NodeIdentification;
 import nl.johnvanweel.iot.web.model.IotNode;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  */
 @Component
-public class AvailableDevicesService {
+public class AvailableDevicesService implements DefaultEntryListener<Object,Object> {
     private Logger logger = Logger.getLogger(AvailableDevicesService.class);
 
-    private final IChannel channel;
-
-    private Map<String, IotNode> knownDevices = new HashMap<>();
+	private final ClusterBusiness clusterBusiness;
 
     @Autowired
-    public AvailableDevicesService(final IChannel channel) {
-        this.channel = channel;
-    }
+    public AvailableDevicesService(ClusterBusiness clusterBusiness) {
+		this.clusterBusiness = clusterBusiness;
+	}
 
-    public void reload() {
-        channel.broadcast(new IdentifyGroupMessage());
-    }
-
-    public void add(IotNode iotNode) {
-        logger.info("Adding device " + iotNode.getName());
-        knownDevices.put(iotNode.getName(), iotNode);
-    }
 
     public IotNode[] getAllDevices() {
-        return knownDevices.values().toArray(new IotNode[knownDevices.size()]);
+		List<IotNode> results = new ArrayList<>();
+        for (NodeIdentification node : clusterBusiness.getAllDevices().values()){
+			results.add(new IotNode(node.getHost(), node.getCapabilities()));
+		}
+
+		return results.toArray(new IotNode[results.size()]);
     }
 
     public IotNode getDevice(String name) {
-        return knownDevices.get(name);
+        return new IotNode(name, clusterBusiness.getAllDevices().get(name).getCapabilities());
     }
 }

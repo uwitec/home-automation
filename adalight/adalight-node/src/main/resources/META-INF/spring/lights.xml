@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- Runmode control-->
     <bean class="nl.johnvanweel.iot.light.runmode.RunModeControl">
-        <property name="defaultMode" ref="nl.johnvanweel.iot.light.runmode.SunsetMode"/>
+        <property name="defaultMode" ref="nl.johnvanweel.iot.light.runmode.CylonMode"/>
     </bean>
 
     <!-- Runmodes -->
@@ -20,9 +20,6 @@
     <bean class="nl.johnvanweel.iot.light.runmode.StaticMode">
         <property name="speed" value="1000"/>
     </bean>
-    <bean class="nl.johnvanweel.iot.light.runmode.SunsetMode">
-        <property name="speed" value="50"/>
-    </bean>
     <bean class="nl.johnvanweel.iot.light.runmode.TemperatureSensorMode">
         <property name="speed" value="50"/>
     </bean>
@@ -31,31 +28,10 @@
     <!-- Supporting beans-->
     <bean class="nl.johnvanweel.iot.light.step.FancySpectrum"/>
     <bean class="nl.johnvanweel.iot.light.step.Spectrum"/>
-    <bean class="nl.johnvanweel.iot.light.step.Sunset"/>
     <bean class="nl.johnvanweel.iot.light.step.Cylon"/>
-    <bean class="nl.johnvanweel.iot.light.sunset.ScraperSunsetService"/>
     <bean class="nl.johnvanweel.iot.light.step.SettableGradient"/>
 
-    <import resource="classpath*:sensor-context.xml"/>
-
-    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <property name="targetObject" ref="nl.johnvanweel.iot.light.sunset.ScraperSunsetService"/>
-        <property name="targetMethod" value="findTimes"/>
-    </bean>
-
-    <bean id="lightsUpdateTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-        <property name="jobDetail" ref="jobDetail"/>
-        <property name="cronExpression" value="* 1 * * * ?"/>
-    </bean>
-
-    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-        <property name="triggers">
-            <list>
-                <ref bean="lightsUpdateTrigger"/>
-            </list>
-        </property>
-    </bean>
-
+    <import resource="classpath*:sensor-client.xml"/>
 
     <!-- Configuration -->
     <bean class="nl.johnvanweel.iot.light.configuration.LightsConfiguration">

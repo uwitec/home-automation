@@ -10,6 +10,10 @@ lightControl.controller('LightsCtrl', ['$scope', '$routeParams', '$http',
             $scope.device = data;
         });
 
+        $http.get('devices/' + $routeParams.name+"/Light/information").success(function (data) {
+            $scope.runmodes = data;
+        });
+
         $scope.setColor = function (color) {
             $http.put('devices/' + $routeParams.name + "/Light/color/" + color);
         };

@@ -20,7 +20,7 @@ public class LightsControlServiceTest {
     @Before
     public void setUp() throws Exception {
         channel = mock(IChannel.class);
-        service = new LightsControlService(channel);
+        service = new LightsControlService(channel, null);
     }
 
     @Test

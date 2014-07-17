@@ -3,9 +3,9 @@ package nl.johnvanweel.iot.sensornetwork.xbee;
 import com.rapplogic.xbee.api.PacketListener;
 import com.rapplogic.xbee.api.XBeeResponse;
 import com.rapplogic.xbee.api.zigbee.ZNetRxIoSampleResponse;
-import nl.johnvanweel.iot.sensornetwork.SensorDao;
 import nl.johnvanweel.iot.sensornetwork.SensorReading;
 import nl.johnvanweel.iot.sensornetwork.SensorType;
+import nl.johnvanweel.iot.sensornetwork.business.SensorDataBusiness;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,10 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class DataStoringXbeeSerialSamplePacketListener implements PacketListener {
 	private final Logger log = Logger.getLogger(DataStoringXbeeSerialSamplePacketListener.class);
 
-	private final SensorDao dao;
+	private final SensorDataBusiness dao;
 
 	@Autowired
-	public DataStoringXbeeSerialSamplePacketListener(SensorDao dao) {
+	public DataStoringXbeeSerialSamplePacketListener(SensorDataBusiness dao) {
 		this.dao = dao;
 	}
 
@@ -33,7 +33,7 @@ public class DataStoringXbeeSerialSamplePacketListener implements PacketListener
 		}
 
 		ZNetRxIoSampleResponse response = (ZNetRxIoSampleResponse) xBeeResponse;
-		dao.storeSensorReading(new SensorReading(System.currentTimeMillis(), response.getAnalog1(), "Light", SensorType.LIGHT));
-		dao.storeSensorReading(new SensorReading(System.currentTimeMillis(), response.getAnalog0(), "Temperature", SensorType.TEMPERATURE));
+		dao.store(new SensorReading(System.currentTimeMillis(), response.getAnalog1(), "Light", SensorType.LIGHT));
+		dao.store(new SensorReading(System.currentTimeMillis(), response.getAnalog0(), "Temperature", SensorType.TEMPERATURE));
 	}
 }

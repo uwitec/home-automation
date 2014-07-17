@@ -8,6 +8,7 @@
     <import resource="access.xml"/>
     <import resource="cluster-access.xml"/>
     <import resource="lights.xml"/>
+    <import resource="classpath*:lights-api.xml"/>
     <!--<import resource="step.xml"/>-->
     <!--<import resource="sunset.xml"/>-->
 </beans>

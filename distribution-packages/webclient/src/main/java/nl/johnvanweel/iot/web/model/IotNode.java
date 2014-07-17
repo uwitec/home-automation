@@ -8,12 +8,10 @@ import org.jgroups.Address;
  */
 public class IotNode {
     private String name;
-    private transient Address address;
     private Capability[] capabilities;
 
-    public IotNode(final String name, final Address address, final Capability... capabilities) {
+    public IotNode(final String name, final Capability... capabilities) {
         this.name = name;
-        this.address = address;
         this.capabilities = capabilities;
     }
 
@@ -31,9 +29,5 @@ public class IotNode {
 
     public void setCapabilities(Capability[] capabilities) {
         this.capabilities = capabilities;
-    }
-
-    public Address getAddress() {
-        return address;
     }
 }

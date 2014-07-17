@@ -3,12 +3,12 @@ package nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.clus
 /**
  * Defines all known runmodes
  */
-public enum RunModes {
+public enum RunMode {
     STATIC("static"), SPECTRUM("spectrum"), SPECTRUM_2("spectrum_2"), SUNSET("sunset"), CYLON("cylon"), SENSOR("sensor");
 
     private final String name;
 
-    RunModes(String name) {
+    RunMode(String name) {
         this.name = name;
     }
 

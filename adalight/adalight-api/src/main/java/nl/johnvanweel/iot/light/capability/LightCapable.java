@@ -1,25 +1,24 @@
 package nl.johnvanweel.iot.light.capability;
 
-import nl.johnvanweel.iot.access.cluster.capabilities.Capability;
-import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunModes;
+import nl.johnvanweel.iot.light.capability.nl.johnvanweel.iot.light.access.cluster.RunMode;
 
 /**
  * Device is capable of displaying light
  */
-public class LightCapable extends Capability {
-    private RunModes[] runModeses;
+public class LightCapable  {
+    private RunMode[] runModeses;
 
     public LightCapable() {
-        super("Lights", "Control lights");
+//        super("Lights", "Control lights");
 
-        runModeses = RunModes.values();
+        runModeses = RunMode.values();
     }
 
-    public RunModes[] getRunModeses() {
+    public RunMode[] getRunModeses() {
         return runModeses;
     }
 
-    public void setRunModeses(RunModes[] runModeses) {
+    public void setRunModeses(RunMode[] runModeses) {
         this.runModeses = runModeses;
     }
 }

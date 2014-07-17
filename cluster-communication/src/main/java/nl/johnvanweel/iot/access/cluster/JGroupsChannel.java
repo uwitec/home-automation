@@ -20,8 +20,6 @@ public class JGroupsChannel implements IChannel {
     private String clusterName;
     private JChannel channel;
 
-    @Autowired
-    private ReceiverAdapter receiverAdapter;
 
     //    @Autowired
     public JGroupsChannel() {
@@ -31,7 +29,6 @@ public class JGroupsChannel implements IChannel {
     @PostConstruct
     public void postConstruct() throws Exception {
         channel = new JChannel(configuration.getFilename());
-        channel.setReceiver(receiverAdapter);
         channel.connect(clusterName);
     }
 
@@ -80,8 +77,5 @@ public class JGroupsChannel implements IChannel {
         return channel;
     }
 
-    public void setReceiverAdapter(ReceiverAdapter receiverAdapter) {
-        this.receiverAdapter = receiverAdapter;
-    }
 
 }
