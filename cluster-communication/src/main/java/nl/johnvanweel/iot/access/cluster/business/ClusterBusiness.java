@@ -15,6 +15,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Business component for cluster communication
@@ -28,6 +29,8 @@ public class ClusterBusiness implements DefaultEntryListener<String, NodeIdentif
 
 	private final Map<String, NodeIdentification> allDevices = new HashMap<>();
 
+	private NodeIdentification node;
+
 	@Autowired
 	public ClusterBusiness(@Qualifier("discoveryDataAccess") ClusterDataMapAccess<NodeIdentification> clusterDataMapAccess, Capability...capabilities) throws UnknownHostException {
 		this.clusterDataMapAccess = clusterDataMapAccess;
@@ -39,13 +42,14 @@ public class ClusterBusiness implements DefaultEntryListener<String, NodeIdentif
 	@PostConstruct
 	public void registerSelf() {
 		log.info("Registering on cluster " + hostName);
-		clusterDataMapAccess.store(new NodeIdentification(hostName, capabilities));
+		this.node = new NodeIdentification(UUID.randomUUID(), hostName, capabilities);
+		clusterDataMapAccess.store(node);
 	}
 
 	@PreDestroy
 	public void unregisterSelf() {
 		log.info("Un-Registering on cluster " + hostName);
-		clusterDataMapAccess.remove(new NodeIdentification(hostName, capabilities));
+		clusterDataMapAccess.remove(node);
 	}
 
 	@PostConstruct

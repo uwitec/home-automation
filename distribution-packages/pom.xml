@@ -15,6 +15,7 @@
         <module>sensor-reader</module>
         <module>webclient</module>
         <module>light-control</module>
+        <module>data-server-instance</module>
     </modules>
 
 
