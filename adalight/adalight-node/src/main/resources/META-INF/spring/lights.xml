@@ -23,6 +23,9 @@
     <bean class="nl.johnvanweel.iot.light.runmode.TemperatureSensorMode">
         <property name="speed" value="50"/>
     </bean>
+    <bean class="nl.johnvanweel.iot.light.runmode.LightSensorMode">
+        <property name="speed" value="2000"/>
+    </bean>
 
 
     <!-- Supporting beans-->
@@ -30,6 +33,7 @@
     <bean class="nl.johnvanweel.iot.light.step.Spectrum"/>
     <bean class="nl.johnvanweel.iot.light.step.Cylon"/>
     <bean class="nl.johnvanweel.iot.light.step.SettableGradient"/>
+    <bean class="nl.johnvanweel.iot.light.step.Static"/>
 
     <import resource="classpath*:sensor-client.xml"/>
 

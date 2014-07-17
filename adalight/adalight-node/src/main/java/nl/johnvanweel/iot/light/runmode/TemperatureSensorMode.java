@@ -17,7 +17,7 @@ import javax.annotation.PostConstruct;
 public class TemperatureSensorMode extends nl.johnvanweel.iot.light.runmode.RunMode implements DefaultEntryListener<String, SensorReading> {
 	private final Logger log = Logger.getLogger(TemperatureSensorMode.class);
 
-    public static final String RUNMODE = nl.johnvanweel.iot.light.api.RunMode.SENSOR.getName();
+    public static final String RUNMODE = nl.johnvanweel.iot.light.api.RunMode.SENSOR_TMP.getName();
 
     private final SettableGradient sensor;
 	private final SensorDataBusiness sensorDataBusiness;
