@@ -52,8 +52,8 @@ public class TemperatureSensorMode extends nl.johnvanweel.iot.light.runmode.RunM
 	public void entryAdded(EntryEvent<String, SensorReading> event) {
 		log.info("Added entry.");
 		// Until real sensors, assume the value is between 0 and 100.
-		assert(event.getValue().getValue() <100 && event.getValue().getValue() >= 0);
-		int value = (int) (event.getValue().getValue()*20/100);
+		assert(event.getValue().getValue() <1023 && event.getValue().getValue() >= 0);
+		int value = (int) (event.getValue().getValue()*20/1023);
 		log.info("Setting new value " + value);
 		sensor.setGradientStep(value);
 	}
