@@ -33,7 +33,7 @@ public class RunModeControl {
 
 	@PreDestroy
 	public void preDestroy(){
-		currentModeThread.interrupt();
+		stopCurrentMode();
 	}
 
     /**
