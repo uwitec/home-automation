@@ -48,8 +48,6 @@ public class LightSensorMode extends RunMode implements DefaultEntryListener<Str
 
 	@Override
 	public void entryAdded(EntryEvent<String, SensorReading> event) {
-		log.info("Added entry.");
-		// Until real sensors, assume the value is between 0 and 100.
 		assert (event.getValue().getValue() < 1023 && event.getValue().getValue() >= 0);
 		int value = 100 - (int) (event.getValue().getValue() * 100 / 1023);
 		log.info("Setting new value " + value);
