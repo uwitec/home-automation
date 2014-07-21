@@ -35,5 +35,8 @@ public class DataStoringXbeeSerialSamplePacketListener implements PacketListener
 		ZNetRxIoSampleResponse response = (ZNetRxIoSampleResponse) xBeeResponse;
 		dao.store(new SensorReading(System.currentTimeMillis(), response.getAnalog1(), "Light", SensorType.LIGHT));
 		dao.store(new SensorReading(System.currentTimeMillis(), response.getAnalog0(), "Temperature", SensorType.TEMPERATURE));
+
+		log.info("Storing lights: " + response.getAnalog1());
+		log.info("Storing temperature: " + response.getAnalog0()) ;
 	}
 }
