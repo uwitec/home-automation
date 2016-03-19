@@ -69,7 +69,7 @@ public class HyperionLightService implements ILightService {
         color = new Color(red, green, blue);
         try {
             setColor(color, 50);
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error("Cannot set color!", e);
         }
     }
@@ -78,7 +78,7 @@ public class HyperionLightService implements ILightService {
     public void send() {
         try {
             setImage(allPixels, allPixels.length / 3, 1, 50, -1);
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error("Cannot set color!", e);
         }
 

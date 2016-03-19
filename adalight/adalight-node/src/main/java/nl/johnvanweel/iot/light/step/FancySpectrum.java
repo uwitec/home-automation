@@ -3,6 +3,7 @@ package nl.johnvanweel.iot.light.step;
 import nl.johnvanweel.iot.light.configuration.LightsConfiguration;
 import nl.johnvanweel.iot.light.service.ILightService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  * Loop through the spectrum, changing one light at the time
@@ -10,13 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class FancySpectrum implements Steppable {
     private final ILightService lightService;
     private final LightsConfiguration configuration;
+    private final int totalPixels;
 
     private final double frequency = .1;
 
     @Autowired
-    public FancySpectrum(final ILightService lightService, final LightsConfiguration configuration) {
+    public FancySpectrum(final ILightService lightService, final LightsConfiguration configuration, @Qualifier("totalPixels") final int totalPixels) {
         this.lightService = lightService;
         this.configuration = configuration;
+        this.totalPixels = totalPixels;
     }
 
     private int oldRed = 0;
@@ -34,7 +37,7 @@ public class FancySpectrum implements Steppable {
         int green = (int) (Math.sin(frequency * iteration + 2) * 127 + 128);
         int blue = (int) (Math.sin(frequency * iteration + 4) * 127 + 128);
 
-        if (currentPixel > configuration.getNumberOfLights()) {
+        if (currentPixel > totalPixels - 1) {
             fixOldColors(red, green, blue);
         }
 
@@ -45,7 +48,7 @@ public class FancySpectrum implements Steppable {
     }
 
     private void setPixelColors(int red, int green, int blue) {
-        for (int j = 0; j < configuration.getNumberOfLights(); j++) {
+        for (int j = 0; j < totalPixels; j++) {
             if (currentPixel >= j) {
                 lightService.setPixel(j, red, green, blue);
             } else {

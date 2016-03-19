@@ -1,20 +1,20 @@
 package nl.johnvanweel.iot.light.step;
 
-import nl.johnvanweel.iot.light.configuration.LightsConfiguration;
 import nl.johnvanweel.iot.light.service.ILightService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  * Loop through the spectrum
  */
 public class Spectrum implements Steppable {
     private final ILightService ILightService;
-    private final LightsConfiguration configuration;
+    private int totalPixels;
 
     @Autowired
-    public Spectrum(final LightsConfiguration configuration, final ILightService ILightService) {
-        this.configuration = configuration;
+    public Spectrum(final ILightService ILightService, @Qualifier("totalPixels") final int totalPixels) {
         this.ILightService = ILightService;
+        this.totalPixels = totalPixels;
     }
 
     private final double frequency = .1;
@@ -26,7 +26,7 @@ public class Spectrum implements Steppable {
     public void step() {
         iteration = direction.getNext(iteration);
 
-        if (iteration >= 32 || iteration <= 0) {
+        if (iteration >= totalPixels - 1 || iteration <= 0) {
             direction = Direction.change(direction);
         }
 
