@@ -8,6 +8,9 @@
     </bean>
 
     <!-- Runmodes -->
+    <bean class="nl.johnvanweel.iot.light.runmode.OffMode">
+        <property name="speed" value="50"/>
+    </bean>
     <bean class="nl.johnvanweel.iot.light.runmode.FancySpectrumMode">
         <property name="speed" value="200"/>
     </bean>

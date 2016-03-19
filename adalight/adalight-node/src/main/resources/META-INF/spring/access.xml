@@ -4,6 +4,5 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- Lights access -->
-    <bean class="nl.johnvanweel.iot.light.access.boblight.BobILightService"/>
-    <bean class="nl.johnvanweel.iot.light.access.boblight.BoblightDeamonFactory"/>
+    <bean class="nl.johnvanweel.iot.light.access.hyperion.HyperionLightService"/>
 </beans>
