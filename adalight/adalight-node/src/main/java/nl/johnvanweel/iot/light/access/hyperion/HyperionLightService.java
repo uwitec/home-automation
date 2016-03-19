@@ -1,7 +1,10 @@
 package nl.johnvanweel.iot.light.access.hyperion;
 
+import com.google.protobuf.ByteString;
 import nl.johnvanweel.iot.light.service.ILightService;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -20,12 +23,28 @@ import static proto.Message.*;
 public class HyperionLightService implements ILightService {
     private final Logger log = Logger.getLogger(HyperionLightService.class);
 
+    @Autowired
+    @Qualifier("totalPixels")
+    private Integer totalPixels;
+
     private Socket mSocket;
+
+    private byte[] allPixels;
 
     @PostConstruct
     public void postConstruct() throws IOException {
         log.info("connecting to pi");
         mSocket = new Socket("192.168.0.24", 19445);
+
+        allPixels = new byte[totalPixels*3];
+
+        reset();
+    }
+
+    private void reset() {
+        for (int i = 0; i < totalPixels * 3; i++) {
+            allPixels[i] = 0;
+        }
     }
 
     @PreDestroy
@@ -35,26 +54,35 @@ public class HyperionLightService implements ILightService {
         }
     }
 
-    private Color color = new Color(255, 255, 255);
+    private Color color = new Color(100, 100, 100);
 
     @Override
     public void setPixel(int pixelNumber, int red, int green, int blue) {
-        allPixels(red, green, blue);
+        int pixelPosition = pixelNumber * 3;
+        allPixels[pixelPosition] = (byte) (red);
+        allPixels[pixelPosition + 1] = (byte) (green);
+        allPixels[pixelPosition + 2] = (byte) (blue);
     }
 
     @Override
     public void allPixels(int red, int green, int blue) {
         color = new Color(red, green, blue);
-        send();
-    }
-
-    @Override
-    public void send() {
         try {
             setColor(color, 50);
         } catch (IOException e) {
             log.error("Cannot set color!", e);
         }
+    }
+
+    @Override
+    public void send() {
+        try {
+            setImage(allPixels, allPixels.length / 3, 1, 50, -1);
+        } catch (IOException e) {
+            log.error("Cannot set color!", e);
+        }
+
+        reset();
     }
 
 
@@ -82,6 +110,23 @@ public class HyperionLightService implements ILightService {
     public void clearall() throws IOException {
         HyperionRequest request = HyperionRequest.newBuilder()
                 .setCommand(HyperionRequest.Command.CLEARALL)
+                .build();
+
+        sendRequest(request);
+    }
+
+    public void setImage(byte[] data, int width, int height, int priority, int duration_ms) throws IOException {
+        ImageRequest imageRequest = ImageRequest.newBuilder()
+                .setImagedata(ByteString.copyFrom(data))
+                .setImagewidth(width)
+                .setImageheight(height)
+                .setPriority(priority)
+                .setDuration(duration_ms)
+                .build();
+
+        HyperionRequest request = HyperionRequest.newBuilder()
+                .setCommand(HyperionRequest.Command.IMAGE)
+                .setExtension(ImageRequest.imageRequest, imageRequest)
                 .build();
 
         sendRequest(request);

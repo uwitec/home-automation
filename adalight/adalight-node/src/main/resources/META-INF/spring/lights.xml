@@ -2,6 +2,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="totalPixels" class="java.lang.Integer">
+        <constructor-arg value="50"/>
+    </bean>
+
     <!-- Runmode control-->
     <bean class="nl.johnvanweel.iot.light.runmode.RunModeControl">
         <property name="defaultMode" ref="nl.johnvanweel.iot.light.runmode.CylonMode"/>

@@ -15,7 +15,7 @@ public class CylonTest {
     public void setUp() throws Exception {
         lightService = new DummyILightService();
 
-        cylon = new Cylon(lightService);
+        cylon = new Cylon(lightService, 25);
     }
 
     @Test
