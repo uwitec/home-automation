@@ -1,4 +1,4 @@
-package nl.johnvanweel.iot.light.step;
+package nl.johnvanweel.iot.light.runmode.step;
 
 import java.util.function.Function;
 

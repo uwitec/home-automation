@@ -1,8 +1,7 @@
 package nl.johnvanweel.iot.light.runmode;
 
-import nl.johnvanweel.iot.light.step.Cylon;
+import nl.johnvanweel.iot.light.runmode.step.Cylon;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  * Displays all colors

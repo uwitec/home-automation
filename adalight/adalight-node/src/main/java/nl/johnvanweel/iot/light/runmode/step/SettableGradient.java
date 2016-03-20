@@ -1,4 +1,4 @@
-package nl.johnvanweel.iot.light.step;
+package nl.johnvanweel.iot.light.runmode.step;
 
 import nl.johnvanweel.iot.light.service.ILightService;
 import org.springframework.beans.factory.annotation.Autowired;

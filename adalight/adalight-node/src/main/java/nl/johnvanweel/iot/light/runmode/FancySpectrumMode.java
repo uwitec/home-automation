@@ -1,6 +1,6 @@
 package nl.johnvanweel.iot.light.runmode;
 
-import nl.johnvanweel.iot.light.step.FancySpectrum;
+import nl.johnvanweel.iot.light.runmode.step.FancySpectrum;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**

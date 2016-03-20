@@ -1,5 +1,6 @@
 package nl.johnvanweel.iot.light.step;
 
+import nl.johnvanweel.iot.light.runmode.step.Spectrum;
 import nl.johnvanweel.iot.light.service.dummy.DummyILightService;
 import org.junit.Before;
 import org.junit.Test;

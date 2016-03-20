@@ -37,11 +37,11 @@
 
 
     <!-- Supporting beans-->
-    <bean class="nl.johnvanweel.iot.light.step.FancySpectrum"/>
-    <bean class="nl.johnvanweel.iot.light.step.Spectrum"/>
-    <bean class="nl.johnvanweel.iot.light.step.Cylon"/>
-    <bean class="nl.johnvanweel.iot.light.step.SettableGradient"/>
-    <bean class="nl.johnvanweel.iot.light.step.Static"/>
+    <bean class="nl.johnvanweel.iot.light.runmode.step.FancySpectrum"/>
+    <bean class="nl.johnvanweel.iot.light.runmode.step.Spectrum"/>
+    <bean class="nl.johnvanweel.iot.light.runmode.step.Cylon"/>
+    <bean class="nl.johnvanweel.iot.light.runmode.step.SettableGradient"/>
+    <bean class="nl.johnvanweel.iot.light.runmode.step.Static"/>
 
     <import resource="classpath*:sensor-client.xml"/>
 

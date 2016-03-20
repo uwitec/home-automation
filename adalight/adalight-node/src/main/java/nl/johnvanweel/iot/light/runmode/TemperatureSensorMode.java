@@ -2,7 +2,7 @@ package nl.johnvanweel.iot.light.runmode;
 
 import com.hazelcast.core.EntryEvent;
 import nl.johnvanweel.iot.access.cluster.listener.DefaultEntryListener;
-import nl.johnvanweel.iot.light.step.SettableGradient;
+import nl.johnvanweel.iot.light.runmode.step.SettableGradient;
 import nl.johnvanweel.iot.sensornetwork.SensorReading;
 import nl.johnvanweel.iot.sensornetwork.SensorType;
 import nl.johnvanweel.iot.sensornetwork.business.SensorDataBusiness;

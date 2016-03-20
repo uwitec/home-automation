@@ -1,4 +1,4 @@
-package nl.johnvanweel.iot.light.step;
+package nl.johnvanweel.iot.light.runmode.step;
 
 import nl.johnvanweel.iot.light.service.ILightService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +10,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 public class Cylon implements Steppable {
     private final ILightService ILightService;
     private int totalPixels;
-
-    private int vlow = 5;
-    private int low = 20;
-    private int med = 50;
-    private int high = 255;
 
     private int currentPixel = 0;
     private Direction direction = Direction.RIGHT;

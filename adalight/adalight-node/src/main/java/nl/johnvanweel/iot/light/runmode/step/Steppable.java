@@ -1,4 +1,4 @@
-package nl.johnvanweel.iot.light.step;
+package nl.johnvanweel.iot.light.runmode.step;
 
 /**
  * Marks that a class is able to step once in changing the lights.
