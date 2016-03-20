@@ -2,10 +2,7 @@ package nl.johnvanweel.iot.light.runmode.filter;
 
 import nl.johnvanweel.iot.light.service.ILightService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,7 +51,7 @@ public class FilteredLightService {
 
     public void toggleFilter(String name) {
         lightFilters.stream().filter(filter -> filter.getName().equals(name)).forEach(filter -> {
-           filter.toggle();
+            filter.toggle();
         });
     }
 }

@@ -24,7 +24,7 @@ public class StaticMode extends nl.johnvanweel.iot.light.runmode.RunMode {
 
     @Override
     public void toggleFilter(String name) {
-       aStatic.toggleFilter(name);
+        aStatic.toggleFilter(name);
     }
 
     @Override

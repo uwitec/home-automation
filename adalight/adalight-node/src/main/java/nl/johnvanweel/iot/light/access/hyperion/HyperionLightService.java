@@ -30,13 +30,14 @@ public class HyperionLightService implements ILightService {
     private Socket mSocket;
 
     private byte[] allPixels;
+    private Color color = new Color(100, 100, 100);
 
     @PostConstruct
     public void postConstruct() throws IOException {
         log.info("connecting to pi");
         mSocket = new Socket("192.168.0.24", 19445);
 
-        allPixels = new byte[totalPixels*3];
+        allPixels = new byte[totalPixels * 3];
 
         reset();
     }
@@ -53,8 +54,6 @@ public class HyperionLightService implements ILightService {
             mSocket.close();
         }
     }
-
-    private Color color = new Color(100, 100, 100);
 
     @Override
     public void setPixel(int pixelNumber, int red, int green, int blue) {

@@ -15,28 +15,27 @@ import javax.annotation.PostConstruct;
  * set it.
  */
 public class RunmodeListener implements DefaultEntryListener<String, LightChangeCommand> {
-	private Logger log = Logger.getLogger(RunmodeListener.class);
+    private final RunModeControl control;
+    private final LightsBusiness business;
+    private Logger log = Logger.getLogger(RunmodeListener.class);
 
-	private final RunModeControl control;
-	private final LightsBusiness business;
+    @Autowired
+    public RunmodeListener(final RunModeControl runmodeControl, LightsBusiness business) {
+        this.control = runmodeControl;
+        this.business = business;
+    }
 
-	@Autowired
-	public RunmodeListener(final RunModeControl runmodeControl, LightsBusiness business) {
-		this.control = runmodeControl;
-		this.business = business;
-	}
+    @PostConstruct
+    public void addListener() {
+        business.addListener(this);
+    }
 
-	@PostConstruct
-	public void addListener() {
-		business.addListener(this);
-	}
+    @Override
+    public void entryAdded(EntryEvent<String, LightChangeCommand> event) {
+        log.info("Received command " + event);
 
-	@Override
-	public void entryAdded(EntryEvent<String, LightChangeCommand> event) {
-		log.info("Received command " + event);
-
-		if (event.getValue().getRunMode() != null) {
-			control.start(event.getValue().getRunMode().toString());
-		}
-	}
+        if (event.getValue().getRunMode() != null) {
+            control.start(event.getValue().getRunMode().toString());
+        }
+    }
 }

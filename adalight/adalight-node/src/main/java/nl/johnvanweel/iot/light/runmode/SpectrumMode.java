@@ -21,10 +21,12 @@ public class SpectrumMode extends nl.johnvanweel.iot.light.runmode.RunMode {
     protected void executeStep() {
         spectrum.step();
     }
+
     @Override
     public void toggleFilter(String name) {
         // No filters
     }
+
     public LightRunMode identify() {
         return new LightRunMode(RUNMODE);
     }

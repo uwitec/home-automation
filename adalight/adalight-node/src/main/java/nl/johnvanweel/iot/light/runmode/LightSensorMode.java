@@ -16,39 +16,41 @@ import javax.annotation.PostConstruct;
  * Displays all colors
  */
 public class LightSensorMode extends RunMode implements DefaultEntryListener<String, SensorReading> {
-	public static final String RUNMODE = nl.johnvanweel.iot.light.api.RunMode.SENSOR_LIG.getName();
-	private final Logger log = Logger.getLogger(LightSensorMode.class);
-	private final Static step;
-	private final SensorDataBusiness sensorDataBusiness;
+    public static final String RUNMODE = nl.johnvanweel.iot.light.api.RunMode.SENSOR_LIG.getName();
+    private final Logger log = Logger.getLogger(LightSensorMode.class);
+    private final Static step;
+    private final SensorDataBusiness sensorDataBusiness;
 
-	@Autowired
-	public LightSensorMode(final Static step, final SensorDataBusiness sensorDataBusiness) {
-		this.step = step;
-		this.sensorDataBusiness = sensorDataBusiness;
-	}
+    @Autowired
+    public LightSensorMode(final Static step, final SensorDataBusiness sensorDataBusiness) {
+        this.step = step;
+        this.sensorDataBusiness = sensorDataBusiness;
+    }
 
-	@PostConstruct
-	public void registerListener() {
-		sensorDataBusiness.addListener(this, SensorType.LIGHT);
-	}
+    @PostConstruct
+    public void registerListener() {
+        sensorDataBusiness.addListener(this, SensorType.LIGHT);
+    }
 
-	@Override
-	protected void executeStep() {
-		step.step();
-	}
-	@Override
-	public void toggleFilter(String name) {
-		// No filters
-	}
-	public LightRunMode identify() {
-		return new LightRunMode(RUNMODE);
-	}
+    @Override
+    protected void executeStep() {
+        step.step();
+    }
 
-	@Override
-	public void entryAdded(EntryEvent<String, SensorReading> event) {
-		assert (event.getValue().getValue() < 1023 && event.getValue().getValue() >= 0);
-		int value = 100 - (int) (event.getValue().getValue() * 100 / 1023);
-		log.info("Setting new value " + value);
-		step.setPercentage(value);
-	}
+    @Override
+    public void toggleFilter(String name) {
+        // No filters
+    }
+
+    public LightRunMode identify() {
+        return new LightRunMode(RUNMODE);
+    }
+
+    @Override
+    public void entryAdded(EntryEvent<String, SensorReading> event) {
+        assert (event.getValue().getValue() < 1023 && event.getValue().getValue() >= 0);
+        int value = 100 - (int) (event.getValue().getValue() * 100 / 1023);
+        log.info("Setting new value " + value);
+        step.setPercentage(value);
+    }
 }

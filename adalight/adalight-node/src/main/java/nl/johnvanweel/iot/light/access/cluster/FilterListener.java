@@ -17,12 +17,10 @@ import java.util.List;
  * set it.
  */
 public class FilterListener implements DefaultEntryListener<String, FilterChangeCommand> {
-    private Logger log = Logger.getLogger(FilterListener.class);
-
     private final RunModeControl control;
     private final LightsBusiness business;
-
     private final List<RunMode> runModes;
+    private Logger log = Logger.getLogger(FilterListener.class);
 
     @Autowired
     public FilterListener(final RunModeControl runmodeControl, LightsBusiness business, List<RunMode> runModes) {

@@ -14,20 +14,17 @@ public class FancySpectrum implements Steppable {
     private final int totalPixels;
 
     private final double frequency = .1;
-
+    private int oldRed = 0;
+    private int oldGreen = 0;
+    private int oldBlue = 0;
+    private int iteration = 0;
+    private int currentPixel = 0;
     @Autowired
     public FancySpectrum(final ILightService lightService, final LightsConfiguration configuration, @Qualifier("totalPixels") final int totalPixels) {
         this.lightService = lightService;
         this.configuration = configuration;
         this.totalPixels = totalPixels;
     }
-
-    private int oldRed = 0;
-    private int oldGreen = 0;
-    private int oldBlue = 0;
-
-    private int iteration = 0;
-    private int currentPixel = 0;
 
     @Override
     public void step() {

@@ -24,7 +24,7 @@ public class Cylon implements Steppable {
     public void step() {
         currentPixel = direction.getNext(currentPixel);
 
-        if (currentPixel >= totalPixels-1|| currentPixel <= 0) {
+        if (currentPixel >= totalPixels - 1 || currentPixel <= 0) {
             direction = Direction.change(direction);
         }
 

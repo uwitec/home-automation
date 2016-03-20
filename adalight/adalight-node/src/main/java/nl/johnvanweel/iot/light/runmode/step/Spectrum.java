@@ -9,18 +9,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
  */
 public class Spectrum implements Steppable {
     private final ILightService ILightService;
+    private final double frequency = .1;
     private int totalPixels;
-
+    private Direction direction = Direction.RIGHT;
+    private int iteration = 0;
     @Autowired
     public Spectrum(final ILightService ILightService, @Qualifier("totalPixels") final int totalPixels) {
         this.ILightService = ILightService;
         this.totalPixels = totalPixels;
     }
-
-    private final double frequency = .1;
-
-    private Direction direction = Direction.RIGHT;
-    private int iteration = 0;
 
     @Override
     public void step() {

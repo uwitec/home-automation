@@ -23,10 +23,6 @@ public enum Direction {
         return i - 1;
     }
 
-    public int getNext(Integer current) {
-        return next.apply(current);
-    }
-
     public static Direction change(Direction direction) {
         switch (direction) {
             case LEFT:
@@ -34,5 +30,9 @@ public enum Direction {
             default:
                 return LEFT;
         }
+    }
+
+    public int getNext(Integer current) {
+        return next.apply(current);
     }
 }

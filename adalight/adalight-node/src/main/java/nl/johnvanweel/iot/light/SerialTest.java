@@ -4,7 +4,7 @@ package nl.johnvanweel.iot.light;
  *
  */
 public class SerialTest {
-	public static void main(String[] args) throws Throwable {
+    public static void main(String[] args) throws Throwable {
 //		XBee xBee = new XBee();
 //		xBee.open("/dev/ttyUSB0", 9600);
 //		xBee.addPacketListener(response -> {
@@ -15,5 +15,5 @@ public class SerialTest {
 //			System.out.println("==========================================================");
 //
 //		});
-	}
+    }
 }

@@ -11,12 +11,12 @@ public abstract class AbstractLightFilter implements LightFilter {
         return active;
     }
 
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     @Override
     public void toggle() {
         active = !active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
     }
 }

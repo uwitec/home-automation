@@ -5,7 +5,9 @@ package nl.johnvanweel.iot.light.runmode.filter;
  */
 public interface LightFilter {
     String getName();
+
     boolean isActive();
+
     int[] filter(int red, int green, int blue);
 
     void toggle();
