@@ -52,13 +52,6 @@ public abstract class RunMode implements Runnable {
      */
     public abstract String identify();
 
-    /**
-     * Reconfigures the RunMode with the new parameters
-     *
-	 * @param message parameters
-	 */
-    protected abstract void reconfigure(int[] message);
-
     public int getSpeed() {
         return speed;
     }

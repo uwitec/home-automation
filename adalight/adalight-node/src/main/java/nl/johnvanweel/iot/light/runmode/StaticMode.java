@@ -18,18 +18,11 @@ public class StaticMode extends nl.johnvanweel.iot.light.runmode.RunMode {
 
     @Override
     protected void executeStep() {
-
+        lightService.allPixels(255,255,255);
     }
 
     @Override
     public String identify() {
         return RUNMODE;
-    }
-
-    @Override
-    protected void reconfigure(int[] rgb) {
-            lightService.allPixels(rgb[0], rgb[1], rgb[2]);
-
-
     }
 }

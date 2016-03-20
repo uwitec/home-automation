@@ -43,11 +43,6 @@ public class TemperatureSensorMode extends nl.johnvanweel.iot.light.runmode.RunM
         return RUNMODE;
     }
 
-    @Override
-    protected void reconfigure(int[] message) {
-
-    }
-
 	@Override
 	public void entryAdded(EntryEvent<String, SensorReading> event) {
 		log.info("Added entry.");

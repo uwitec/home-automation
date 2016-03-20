@@ -55,15 +55,6 @@ public class RunModeControl {
 		startNewMode(mode);
 	}
 
-    /**
-     * Reconfigure the currently running mode.
-     *
-	 * @param message message
-	 */
-    public void reconfigure(int[] message) {
-        currentMode.reconfigure(message);
-    }
-
     private Predicate<? super RunMode> matchMode(String mode) {
         return e -> e.identify().equalsIgnoreCase(mode);
     }

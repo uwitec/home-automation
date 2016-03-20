@@ -42,11 +42,6 @@ public class LightSensorMode extends RunMode implements DefaultEntryListener<Str
 	}
 
 	@Override
-	protected void reconfigure(int[] message) {
-		step.setColor(message);
-	}
-
-	@Override
 	public void entryAdded(EntryEvent<String, SensorReading> event) {
 		assert (event.getValue().getValue() < 1023 && event.getValue().getValue() >= 0);
 		int value = 100 - (int) (event.getValue().getValue() * 100 / 1023);

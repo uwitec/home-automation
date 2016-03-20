@@ -25,9 +25,4 @@ public class OffMode extends RunMode {
     public String identify() {
         return RUNMODE;
     }
-
-    @Override
-    protected void reconfigure(int[] message) {
-
-    }
 }

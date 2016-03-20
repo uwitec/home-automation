@@ -25,9 +25,4 @@ public class SpectrumMode extends nl.johnvanweel.iot.light.runmode.RunMode {
     public String identify() {
         return RUNMODE;
     }
-
-    @Override
-    protected void reconfigure(int[] message) {
-
-    }
 }
