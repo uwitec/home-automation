@@ -46,6 +46,8 @@ public abstract class RunMode implements Runnable {
      */
     protected abstract void executeStep();
 
+    public abstract void toggleFilter(String name);
+
     /**
      * Identifies the runmode
      *

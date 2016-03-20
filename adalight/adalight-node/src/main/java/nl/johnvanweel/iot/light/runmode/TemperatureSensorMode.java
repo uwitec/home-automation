@@ -42,7 +42,10 @@ public class TemperatureSensorMode extends nl.johnvanweel.iot.light.runmode.RunM
 	public LightRunMode identify() {
 		return new LightRunMode(RUNMODE);
 	}
-
+	@Override
+	public void toggleFilter(String name) {
+		// No filters
+	}
 	@Override
 	public void entryAdded(EntryEvent<String, SensorReading> event) {
 		log.info("Added entry.");

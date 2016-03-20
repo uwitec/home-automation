@@ -2,10 +2,13 @@
     <span class="h3">Light controls of {{device.name}}</span>
 </div>
 
-    <div ng-repeat="runmode in runmodes" style="display:flex" >
-        <div class="span2 btn btn-round-left" ng-click="setRunmode(runmode.name)">{{runmode.name}}</div>
-        <!--<div class="span2 btn" ng-click="setColor('ff0000')">red</div>-->
-        <!--<div class="span2 btn" ng-click="setColor('00ff00')">green</div>-->
-        <!--<div class="span2 btn" ng-click="setColor('0000ff')">blue</div>-->
-        <div class="span1 btn btn-round-right">&nbsp;   </div>
+<div ng-repeat="runmode in runmodes" style="display:flex">
+    <div class="span2 btn btn-round-left" ng-click="setRunmode(runmode.name)">{{runmode.name}}</div>
+    <div ng-repeat="filter in runmode.filters" class="span2 btn" ng-click="toggleFilter(runmode.name, filter)">
+        {{filter}}
     </div>
+    <!--<div class="span2 btn" ng-click="setColor('ff0000')">red</div>-->
+    <!--<div class="span2 btn" ng-click="setColor('00ff00')">green</div>-->
+    <!--<div class="span2 btn" ng-click="setColor('0000ff')">blue</div>-->
+    <div class="span1 btn btn-round-right">&nbsp;   </div>
+</div>

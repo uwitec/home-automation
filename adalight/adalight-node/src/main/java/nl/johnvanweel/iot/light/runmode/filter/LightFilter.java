@@ -7,4 +7,6 @@ public interface LightFilter {
     String getName();
     boolean isActive();
     int[] filter(int red, int green, int blue);
+
+    void toggle();
 }

@@ -17,5 +17,9 @@ lightControl.controller('LightsCtrl', ['$scope', '$routeParams', '$http',
         $scope.setRunmode = function(runmode){
             $http.put('devices/' + $routeParams.name + "/capability/Light/runmode/" + runmode);
         };
+
+        $scope.toggleFilter = function(runmode, filter){
+            $http.put('devices/' + $routeParams.name + "/capability/Light/runmode/" + runmode+"/filter/"+filter);
+        };
     }]);
 

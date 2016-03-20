@@ -25,4 +25,8 @@ public class LightsControlService {
     public void changeMode(String newMode) {
 		lightsBusiness.changeMode(newMode);
     }
+
+	public void toggleFilter(String mode, String filter){
+		lightsBusiness.toggleFilter(mode, filter);
+	}
 }

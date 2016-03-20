@@ -36,7 +36,10 @@ public class LightSensorMode extends RunMode implements DefaultEntryListener<Str
 	protected void executeStep() {
 		step.step();
 	}
-
+	@Override
+	public void toggleFilter(String name) {
+		// No filters
+	}
 	public LightRunMode identify() {
 		return new LightRunMode(RUNMODE);
 	}

@@ -51,4 +51,10 @@ public class FilteredLightService {
     public List<String> getLightFilterNames() {
         return lightFilters.stream().map(LightFilter::getName).collect(Collectors.toList());
     }
+
+    public void toggleFilter(String name) {
+        lightFilters.stream().filter(filter -> filter.getName().equals(name)).forEach(filter -> {
+           filter.toggle();
+        });
+    }
 }

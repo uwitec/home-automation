@@ -47,7 +47,16 @@ public class LightsController {
         lightsControlService.changeMode(newMode);
     }
 
-	@RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "runmode/{runMode}/filter/{filter}", method = RequestMethod.PUT)
+    public void toggleFilter(@PathVariable String device, @PathVariable String runMode, @PathVariable String filter) {
+        IotNode node = devicesService.getDevice(device);
+
+        lightsControlService.toggleFilter(runMode, filter);
+    }
+
+
+
+    @RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public LightRunMode[] getAvailableRunmodes(@PathVariable String device) {
         IotNode node = devicesService.getDevice(device);

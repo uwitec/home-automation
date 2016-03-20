@@ -36,4 +36,8 @@ public class Static implements Steppable {
 	public List<String> getFilters() {
 		return filteredLightService.getLightFilterNames();
 	}
+
+	public void toggleFilter(String name) {
+		filteredLightService.toggleFilter(name);
+	}
 }

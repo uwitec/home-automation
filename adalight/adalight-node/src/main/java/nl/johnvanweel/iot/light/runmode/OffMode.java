@@ -19,7 +19,12 @@ public class OffMode extends RunMode {
 
     @Override
     protected void executeStep() {
-        lightService.allPixels(0,0,0);
+        lightService.allPixels(0, 0, 0);
+    }
+
+    @Override
+    public void toggleFilter(String name) {
+        // No filters
     }
 
     public LightRunMode identify() {

@@ -22,6 +22,11 @@ public class CylonMode extends nl.johnvanweel.iot.light.runmode.RunMode {
         spectrum.step();
     }
 
+    @Override
+    public void toggleFilter(String name) {
+        // No filters
+    }
+
     public LightRunMode identify() {
         return new LightRunMode(RUNMODE);
     }

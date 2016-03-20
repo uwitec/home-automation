@@ -18,4 +18,5 @@
 
     <!-- Listeners -->
     <bean class="nl.johnvanweel.iot.light.access.cluster.RunmodeListener"/>
+    <bean class="nl.johnvanweel.iot.light.access.cluster.FilterListener"/>
 </beans>
