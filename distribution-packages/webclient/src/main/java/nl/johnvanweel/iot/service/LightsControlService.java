@@ -18,25 +18,6 @@ public class LightsControlService {
 	}
 
     /**
-     * Changes the color of the light
-     *
-     * @param node     Device on the network
-     * @param newColor New color, as a valid hex String.
-     */
-    public void changeLight(IotNode node, String newColor) {
-        if (newColor.length() != 6) {
-            throw new RuntimeException("Not a valid color code.");
-        }
-
-        int red = Integer.decode("0x" + newColor.substring(0, 2));
-        int green = Integer.decode("0x" + newColor.substring(2, 4));
-        int blue = Integer.decode("0x" + newColor.substring(4, 6));
-
-
-		lightsBusiness.changeColor(new int[]{red, green, blue});
-    }
-
-    /**
      * TODO: Sanitize input
      *
 	 * @param newMode

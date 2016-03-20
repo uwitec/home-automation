@@ -33,21 +33,9 @@ public class LightsController {
     }
 
     /**
-     * Changes the color of the device
-     *
-     * @param device   device to change
-     * @param newColor new color
-     */
-    @RequestMapping(value = "color/{newColor}", method = RequestMethod.PUT)
-    public void changeColor(@PathVariable String device, @PathVariable String newColor) {
-        IotNode node = devicesService.getDevice(device);
-
-        lightsControlService.changeLight(node, newColor);
-
-    }
-
-    /**
      * Changes the mode of the device
+     *
+     * TODO: Add node
      *
      * @param device  device to change
      * @param newMode new mode
