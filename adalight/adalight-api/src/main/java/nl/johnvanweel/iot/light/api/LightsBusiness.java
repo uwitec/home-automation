@@ -22,7 +22,7 @@ public class LightsBusiness {
 	 * @param newMode new mode
 	 */
 	public void changeMode(String newMode) {
-		runModeCluster.store(new LightChangeCommand(RunMode.valueOf(newMode), null));
+		runModeCluster.store(new LightChangeCommand(newMode, null));
 	}
 
 	/**

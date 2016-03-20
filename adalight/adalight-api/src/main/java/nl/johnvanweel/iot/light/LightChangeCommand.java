@@ -9,16 +9,16 @@ import java.util.UUID;
  * Command object to change the lights behavior
  */
 public class LightChangeCommand implements IStorable{
-	private final RunMode runMode;
+	private final String runMode;
 	private final int[] rgb;
 
 
-	public LightChangeCommand(RunMode runMode, int[] rgb) {
+	public LightChangeCommand(String runMode, int[] rgb) {
 		this.runMode = runMode;
 		this.rgb = rgb;
 	}
 
-	public RunMode getRunMode() {
+	public String getRunMode() {
 		return runMode;
 	}
 
