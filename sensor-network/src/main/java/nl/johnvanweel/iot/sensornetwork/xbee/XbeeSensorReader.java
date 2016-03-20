@@ -36,6 +36,7 @@ public class XbeeSensorReader {
 		} catch (XBeeException e) {
 			log.warn("Cannot open XBee.", e);
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 
 		xBee.addPacketListener(listener);

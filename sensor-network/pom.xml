@@ -34,7 +34,7 @@
             <groupId>javax</groupId>
             <artifactId>rxtx</artifactId>
             <version>1.0</version>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
 
         <dependency>
