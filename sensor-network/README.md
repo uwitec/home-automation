@@ -1,0 +1,3 @@
+- Install rxtx
+- load native library -Djava.library.path=/usr/lib64/rxtx
+- allow user to access /dev/ttyUSB0
