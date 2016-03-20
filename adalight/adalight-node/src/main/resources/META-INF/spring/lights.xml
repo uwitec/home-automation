@@ -9,7 +9,6 @@
 
     <!-- Runmode control-->
     <bean class="nl.johnvanweel.iot.light.runmode.RunModeControl">
-        <!--<property name="defaultMode" ref="nl.johnvanweel.iot.light.runmode.CylonMode"/>-->
         <property name="defaultMode" ref="static"/>
     </bean>
 
@@ -17,24 +16,24 @@
     <bean class="nl.johnvanweel.iot.light.runmode.OffMode">
         <property name="speed" value="50"/>
     </bean>
-    <!--<bean class="nl.johnvanweel.iot.light.runmode.FancySpectrumMode">-->
-        <!--<property name="speed" value="200"/>-->
-    <!--</bean>-->
-    <!--<bean class="nl.johnvanweel.iot.light.runmode.CylonMode">-->
-        <!--<property name="speed" value="100"/>-->
-    <!--</bean>-->
-    <!--<bean class="nl.johnvanweel.iot.light.runmode.SpectrumMode">-->
-        <!--<property name="speed" value="200"/>-->
-    <!--</bean>-->
+    <bean class="nl.johnvanweel.iot.light.runmode.FancySpectrumMode">
+        <property name="speed" value="200"/>
+    </bean>
+    <bean class="nl.johnvanweel.iot.light.runmode.CylonMode">
+        <property name="speed" value="100"/>
+    </bean>
+    <bean class="nl.johnvanweel.iot.light.runmode.SpectrumMode">
+        <property name="speed" value="200"/>
+    </bean>
     <bean id="static" class="nl.johnvanweel.iot.light.runmode.StaticMode">
         <property name="speed" value="1000"/>
     </bean>
-    <!--<bean class="nl.johnvanweel.iot.light.runmode.TemperatureSensorMode">-->
-        <!--<property name="speed" value="50"/>-->
-    <!--</bean>-->
-    <!--<bean class="nl.johnvanweel.iot.light.runmode.LightSensorMode">-->
-        <!--<property name="speed" value="2000"/>-->
-    <!--</bean>-->
+    <bean class="nl.johnvanweel.iot.light.runmode.TemperatureSensorMode">
+        <property name="speed" value="50"/>
+    </bean>
+    <bean class="nl.johnvanweel.iot.light.runmode.LightSensorMode">
+        <property name="speed" value="2000"/>
+    </bean>
 
 
     <!-- Supporting beans-->
