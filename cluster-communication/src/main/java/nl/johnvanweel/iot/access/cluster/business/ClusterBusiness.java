@@ -59,7 +59,7 @@ public class ClusterBusiness implements DefaultEntryListener<String, NodeIdentif
 
 		for (NodeIdentification identification : clusterDataMapAccess.getAll()){
 			log.info("Pre-loading device " + identification.getHost());
-			allDevices.put(identification.getHost(), identification);
+			allDevices.put(identification.getUuid().toString(), identification);
 		}
 	}
 

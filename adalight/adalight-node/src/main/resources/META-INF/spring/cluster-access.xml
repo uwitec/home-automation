@@ -5,10 +5,15 @@
 
     <import resource="classpath*:META-INF/spring/cluster.xml"/>
 
+    <bean id="capabilityFactory" class="nl.johnvanweel.iot.light.LightCapabilityRunModeFactory"/>
+
     <bean class="nl.johnvanweel.iot.light.capability.LightCapable"/>
-    <bean class="nl.johnvanweel.iot.access.cluster.capabilities.Capability">
+    <bean class="nl.johnvanweel.iot.light.model.LightCapability">
         <constructor-arg index="0" value="Lights"/>
         <constructor-arg index="1" value="Lights"/>
+        <constructor-arg index="2">
+            <bean factory-bean="capabilityFactory" factory-method="createLightRunModes"/>
+        </constructor-arg>
     </bean>
 
     <!-- Listeners -->

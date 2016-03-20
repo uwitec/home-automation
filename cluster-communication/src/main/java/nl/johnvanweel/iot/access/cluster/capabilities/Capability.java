@@ -7,7 +7,7 @@ import java.io.Serializable;
  * TODO: Not too happy with this solution! Only used for user-interface to display and act on device capabilities.
  * The idea is to tie certain Group Messages to these capabilities.
  */
-public final class Capability implements Serializable {
+public class Capability implements Serializable {
     private final String name;
     private final String description;
 

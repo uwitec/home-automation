@@ -29,7 +29,7 @@ public class AvailableDevicesService implements DefaultEntryListener<Object,Obje
     public IotNode[] getAllDevices() {
 		List<IotNode> results = new ArrayList<>();
         for (NodeIdentification node : clusterBusiness.getAllDevices().values()){
-			results.add(new IotNode(node.getHost(), node.getCapabilities()));
+			results.add(new IotNode(node.getUuid().toString(), node.getCapabilities()));
 		}
 
 		return results.toArray(new IotNode[results.size()]);
