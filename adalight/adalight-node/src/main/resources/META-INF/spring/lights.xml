@@ -17,31 +17,44 @@
         <property name="speed" value="50"/>
     </bean>
     <bean class="nl.johnvanweel.iot.light.runmode.FancySpectrumMode">
+        <constructor-arg>
+            <bean class="nl.johnvanweel.iot.light.runmode.step.FancySpectrum"/>
+        </constructor-arg>
         <property name="speed" value="200"/>
     </bean>
     <bean class="nl.johnvanweel.iot.light.runmode.CylonMode">
+        <constructor-arg>
+            <bean class="nl.johnvanweel.iot.light.runmode.step.Cylon"/>
+        </constructor-arg>
         <property name="speed" value="100"/>
     </bean>
     <bean class="nl.johnvanweel.iot.light.runmode.SpectrumMode">
+        <constructor-arg>
+            <bean class="nl.johnvanweel.iot.light.runmode.step.Spectrum"/>
+        </constructor-arg>
         <property name="speed" value="200"/>
     </bean>
     <bean id="static" class="nl.johnvanweel.iot.light.runmode.StaticMode">
+        <constructor-arg>
+            <bean class="nl.johnvanweel.iot.light.runmode.step.Static"/>
+        </constructor-arg>
         <property name="speed" value="1000"/>
     </bean>
     <bean class="nl.johnvanweel.iot.light.runmode.TemperatureSensorMode">
+        <constructor-arg>
+            <bean class="nl.johnvanweel.iot.light.runmode.step.SettableGradient"/>
+        </constructor-arg>
         <property name="speed" value="50"/>
     </bean>
     <bean class="nl.johnvanweel.iot.light.runmode.LightSensorMode">
+        <constructor-arg>
+            <bean class="nl.johnvanweel.iot.light.runmode.step.Static"/>
+        </constructor-arg>
         <property name="speed" value="2000"/>
     </bean>
 
 
     <!-- Supporting beans-->
-    <bean class="nl.johnvanweel.iot.light.runmode.step.FancySpectrum"/>
-    <bean class="nl.johnvanweel.iot.light.runmode.step.Spectrum"/>
-    <bean class="nl.johnvanweel.iot.light.runmode.step.Cylon"/>
-    <bean class="nl.johnvanweel.iot.light.runmode.step.SettableGradient"/>
-    <bean class="nl.johnvanweel.iot.light.runmode.step.Static"/>
 
     <import resource="classpath*:sensor-client.xml"/>
 

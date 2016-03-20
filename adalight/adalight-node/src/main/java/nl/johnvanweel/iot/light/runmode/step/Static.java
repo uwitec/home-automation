@@ -10,7 +10,7 @@ public class Static implements Steppable {
 	private final ILightService ILightService;
 
 	private int[] color = new int[]{255, 255, 255};
-	private int percentage;
+	private int percentage = 100;
 
 	@Autowired
 	public Static(final ILightService ILightService) {
@@ -24,10 +24,6 @@ public class Static implements Steppable {
 		final int blue = (color[2] * percentage) / 100;
 
 		ILightService.allPixels(red, green, blue);
-	}
-
-	public void setColor(final int[] color) {
-		this.color = color;
 	}
 
 	public void setPercentage(final int percentage) {
