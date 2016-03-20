@@ -24,10 +24,10 @@ public class FancySpectrumMode extends nl.johnvanweel.iot.light.runmode.RunMode 
 
     @Override
     public void toggleFilter(String name) {
-        // No filters
+        spectrum.toggleFilter(name);
     }
 
     public LightRunMode identify() {
-        return new LightRunMode(RUNMODE);
+        return new LightRunMode(RUNMODE, spectrum.getFilters());
     }
 }

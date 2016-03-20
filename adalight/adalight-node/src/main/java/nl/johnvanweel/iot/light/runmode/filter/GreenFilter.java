@@ -11,6 +11,6 @@ public class GreenFilter extends AbstractLightFilter {
 
     @Override
     public int[] filter(int red, int green, int blue) {
-        return new int[]{0, green, 0};
+        return new int[]{red, 0, blue};
     }
 }

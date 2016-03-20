@@ -12,7 +12,6 @@ public class Static implements Steppable {
     private final FilteredLightService filteredLightService;
 
     private int[] color = new int[]{255, 255, 255};
-    private int percentage = 100;
 
     @Autowired
     public Static(final FilteredLightService filteredLightService) {
@@ -21,15 +20,9 @@ public class Static implements Steppable {
 
     @Override
     public void step() {
-        final int red = (color[0] * percentage) / 100;
-        final int green = (color[1] * percentage) / 100;
-        final int blue = (color[2] * percentage) / 100;
 
-        filteredLightService.allPixels(red, green, blue);
-    }
 
-    public void setPercentage(final int percentage) {
-        this.percentage = percentage;
+        filteredLightService.allPixels(color[0], color[1], color[2]);
     }
 
     public List<String> getFilters() {

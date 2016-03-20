@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="totalPixels" class="java.lang.Integer">
-        <constructor-arg value="50"/>
+        <constructor-arg value="21"/>
     </bean>
 
     <!-- Runmode control-->
@@ -18,7 +18,21 @@
     </bean>
     <bean class="nl.johnvanweel.iot.light.runmode.FancySpectrumMode">
         <constructor-arg>
-            <bean class="nl.johnvanweel.iot.light.runmode.step.FancySpectrum"/>
+            <bean class="nl.johnvanweel.iot.light.runmode.step.FancySpectrum">
+                <constructor-arg>
+                    <bean class="nl.johnvanweel.iot.light.runmode.filter.FilteredLightService">
+                        <constructor-arg>
+                            <list>
+                                <bean class="nl.johnvanweel.iot.light.runmode.filter.RedFilter"/>
+                                <bean class="nl.johnvanweel.iot.light.runmode.filter.GreenFilter"/>
+                                <bean class="nl.johnvanweel.iot.light.runmode.filter.BlueFilter"/>
+                                <bean class="nl.johnvanweel.iot.light.runmode.filter.LightSensorFilter"/>
+                            </list>
+                        </constructor-arg>
+                    </bean>
+                </constructor-arg>
+
+            </bean>
         </constructor-arg>
         <property name="speed" value="200"/>
     </bean>
@@ -44,6 +58,7 @@
                                 <bean class="nl.johnvanweel.iot.light.runmode.filter.RedFilter"/>
                                 <bean class="nl.johnvanweel.iot.light.runmode.filter.GreenFilter"/>
                                 <bean class="nl.johnvanweel.iot.light.runmode.filter.BlueFilter"/>
+                                <bean class="nl.johnvanweel.iot.light.runmode.filter.LightSensorFilter"/>
                             </list>
                         </constructor-arg>
                     </bean>
@@ -57,24 +72,6 @@
             <bean class="nl.johnvanweel.iot.light.runmode.step.SettableGradient"/>
         </constructor-arg>
         <property name="speed" value="50"/>
-    </bean>
-    <bean class="nl.johnvanweel.iot.light.runmode.LightSensorMode">
-        <constructor-arg>
-            <bean class="nl.johnvanweel.iot.light.runmode.step.Static">
-                <constructor-arg>
-                    <bean class="nl.johnvanweel.iot.light.runmode.filter.FilteredLightService">
-                        <constructor-arg>
-                            <list>
-                                <bean class="nl.johnvanweel.iot.light.runmode.filter.RedFilter"/>
-                                <bean class="nl.johnvanweel.iot.light.runmode.filter.GreenFilter"/>
-                                <bean class="nl.johnvanweel.iot.light.runmode.filter.BlueFilter"/>
-                            </list>
-                        </constructor-arg>
-                    </bean>
-                </constructor-arg>
-            </bean>
-        </constructor-arg>
-        <property name="speed" value="2000"/>
     </bean>
 
 

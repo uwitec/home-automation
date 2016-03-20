@@ -1,15 +1,17 @@
 package nl.johnvanweel.iot.light.runmode.step;
 
 import nl.johnvanweel.iot.light.configuration.LightsConfiguration;
-import nl.johnvanweel.iot.light.service.ILightService;
+import nl.johnvanweel.iot.light.runmode.filter.FilteredLightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+
+import java.util.List;
 
 /**
  * Loop through the spectrum, changing one light at the time
  */
 public class FancySpectrum implements Steppable {
-    private final ILightService lightService;
+    private final FilteredLightService filteredLightService;
     private final LightsConfiguration configuration;
     private final int totalPixels;
 
@@ -19,9 +21,10 @@ public class FancySpectrum implements Steppable {
     private int oldBlue = 0;
     private int iteration = 0;
     private int currentPixel = 0;
+
     @Autowired
-    public FancySpectrum(final ILightService lightService, final LightsConfiguration configuration, @Qualifier("totalPixels") final int totalPixels) {
-        this.lightService = lightService;
+    public FancySpectrum(final FilteredLightService filteredLightService, final LightsConfiguration configuration, @Qualifier("totalPixels") final int totalPixels) {
+        this.filteredLightService = filteredLightService;
         this.configuration = configuration;
         this.totalPixels = totalPixels;
     }
@@ -41,19 +44,19 @@ public class FancySpectrum implements Steppable {
         setPixelColors(red, green, blue);
         currentPixel++;
 
-        lightService.send();
+        filteredLightService.send();
     }
 
     private void setPixelColors(int red, int green, int blue) {
         for (int j = 0; j < totalPixels; j++) {
             if (currentPixel >= j) {
-                lightService.setPixel(j, red, green, blue);
+                filteredLightService.setPixel(j, red, green, blue);
             } else {
-                lightService.setPixel(j, oldRed, oldGreen, oldBlue);
+                filteredLightService.setPixel(j, oldRed, oldGreen, oldBlue);
             }
         }
 
-        lightService.setPixel(currentPixel, 255, 0, 0);
+        filteredLightService.setPixel(currentPixel, 255, 0, 0);
     }
 
     private void fixOldColors(int red, int green, int blue) {
@@ -62,5 +65,13 @@ public class FancySpectrum implements Steppable {
         oldRed = red;
         oldGreen = green;
         oldBlue = blue;
+    }
+
+    public void toggleFilter(String name) {
+        filteredLightService.toggleFilter(name);
+    }
+
+    public List<String> getFilters() {
+        return filteredLightService.getLightFilterNames();
     }
 }
