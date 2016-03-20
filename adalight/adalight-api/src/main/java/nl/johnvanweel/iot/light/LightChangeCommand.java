@@ -10,20 +10,13 @@ import java.util.UUID;
  */
 public class LightChangeCommand implements IStorable{
 	private final String runMode;
-	private final int[] rgb;
 
-
-	public LightChangeCommand(String runMode, int[] rgb) {
+	public LightChangeCommand(String runMode) {
 		this.runMode = runMode;
-		this.rgb = rgb;
 	}
 
 	public String getRunMode() {
 		return runMode;
-	}
-
-	public int[] getRgb() {
-		return rgb;
 	}
 
 	@Override

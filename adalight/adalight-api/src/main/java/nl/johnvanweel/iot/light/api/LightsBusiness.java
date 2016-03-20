@@ -22,16 +22,9 @@ public class LightsBusiness {
 	 * @param newMode new mode
 	 */
 	public void changeMode(String newMode) {
-		runModeCluster.store(new LightChangeCommand(newMode, null));
+		runModeCluster.store(new LightChangeCommand(newMode));
 	}
 
-	/**
-	 * Changes the color
-	 * @param rgb rgb values of the new color
-	 */
-	public void changeColor(int[] rgb) {
-		runModeCluster.store(new LightChangeCommand(null, rgb));
-	}
 
 	/**
 	 * Create a listener for light change commands
