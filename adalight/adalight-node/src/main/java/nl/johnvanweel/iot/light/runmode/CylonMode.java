@@ -1,5 +1,6 @@
 package nl.johnvanweel.iot.light.runmode;
 
+import nl.johnvanweel.iot.light.model.LightRunMode;
 import nl.johnvanweel.iot.light.runmode.step.Cylon;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,8 +22,7 @@ public class CylonMode extends nl.johnvanweel.iot.light.runmode.RunMode {
         spectrum.step();
     }
 
-    @Override
-    public String identify() {
-        return RUNMODE;
+    public LightRunMode identify() {
+        return new LightRunMode(RUNMODE);
     }
 }

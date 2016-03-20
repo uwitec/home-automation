@@ -1,5 +1,6 @@
 package nl.johnvanweel.iot.light.runmode;
 
+import nl.johnvanweel.iot.light.model.LightRunMode;
 import org.apache.log4j.Logger;
 
 
@@ -50,7 +51,7 @@ public abstract class RunMode implements Runnable {
      *
      * @return the identification
      */
-    public abstract String identify();
+    public abstract LightRunMode identify();
 
     public int getSpeed() {
         return speed;

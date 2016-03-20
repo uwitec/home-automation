@@ -1,5 +1,6 @@
 package nl.johnvanweel.iot.light.runmode;
 
+import nl.johnvanweel.iot.light.model.LightRunMode;
 import nl.johnvanweel.iot.light.service.ILightService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,8 +22,7 @@ public class OffMode extends RunMode {
         lightService.allPixels(0,0,0);
     }
 
-    @Override
-    public String identify() {
-        return RUNMODE;
+    public LightRunMode identify() {
+        return new LightRunMode(RUNMODE);
     }
 }

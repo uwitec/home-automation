@@ -36,7 +36,19 @@
     </bean>
     <bean id="static" class="nl.johnvanweel.iot.light.runmode.StaticMode">
         <constructor-arg>
-            <bean class="nl.johnvanweel.iot.light.runmode.step.Static"/>
+            <bean class="nl.johnvanweel.iot.light.runmode.step.Static">
+                <constructor-arg>
+                    <bean class="nl.johnvanweel.iot.light.runmode.filter.FilteredLightService">
+                        <constructor-arg>
+                            <list>
+                                <bean class="nl.johnvanweel.iot.light.runmode.filter.RedFilter"/>
+                                <bean class="nl.johnvanweel.iot.light.runmode.filter.GreenFilter"/>
+                                <bean class="nl.johnvanweel.iot.light.runmode.filter.BlueFilter"/>
+                            </list>
+                        </constructor-arg>
+                    </bean>
+                </constructor-arg>
+            </bean>
         </constructor-arg>
         <property name="speed" value="1000"/>
     </bean>
@@ -48,7 +60,19 @@
     </bean>
     <bean class="nl.johnvanweel.iot.light.runmode.LightSensorMode">
         <constructor-arg>
-            <bean class="nl.johnvanweel.iot.light.runmode.step.Static"/>
+            <bean class="nl.johnvanweel.iot.light.runmode.step.Static">
+                <constructor-arg>
+                    <bean class="nl.johnvanweel.iot.light.runmode.filter.FilteredLightService">
+                        <constructor-arg>
+                            <list>
+                                <bean class="nl.johnvanweel.iot.light.runmode.filter.RedFilter"/>
+                                <bean class="nl.johnvanweel.iot.light.runmode.filter.GreenFilter"/>
+                                <bean class="nl.johnvanweel.iot.light.runmode.filter.BlueFilter"/>
+                            </list>
+                        </constructor-arg>
+                    </bean>
+                </constructor-arg>
+            </bean>
         </constructor-arg>
         <property name="speed" value="2000"/>
     </bean>

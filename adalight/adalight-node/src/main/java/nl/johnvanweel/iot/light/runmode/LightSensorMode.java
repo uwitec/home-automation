@@ -2,6 +2,7 @@ package nl.johnvanweel.iot.light.runmode;
 
 import com.hazelcast.core.EntryEvent;
 import nl.johnvanweel.iot.access.cluster.listener.DefaultEntryListener;
+import nl.johnvanweel.iot.light.model.LightRunMode;
 import nl.johnvanweel.iot.light.runmode.step.Static;
 import nl.johnvanweel.iot.sensornetwork.SensorReading;
 import nl.johnvanweel.iot.sensornetwork.SensorType;
@@ -36,9 +37,8 @@ public class LightSensorMode extends RunMode implements DefaultEntryListener<Str
 		step.step();
 	}
 
-	@Override
-	public String identify() {
-		return RUNMODE;
+	public LightRunMode identify() {
+		return new LightRunMode(RUNMODE);
 	}
 
 	@Override

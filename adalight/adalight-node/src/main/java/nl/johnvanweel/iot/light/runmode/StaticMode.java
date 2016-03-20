@@ -1,7 +1,7 @@
 package nl.johnvanweel.iot.light.runmode;
 
+import nl.johnvanweel.iot.light.model.LightRunMode;
 import nl.johnvanweel.iot.light.runmode.step.Static;
-import nl.johnvanweel.iot.light.service.ILightService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -23,7 +23,7 @@ public class StaticMode extends nl.johnvanweel.iot.light.runmode.RunMode {
     }
 
     @Override
-    public String identify() {
-        return RUNMODE;
+    public LightRunMode identify() {
+        return new LightRunMode(RUNMODE, aStatic.getFilters());
     }
 }

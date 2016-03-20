@@ -31,10 +31,10 @@ public class RunModeControl {
         start(defaultMode);
     }
 
-	@PreDestroy
-	public void preDestroy(){
-		stopCurrentMode();
-	}
+    @PreDestroy
+    public void preDestroy() {
+        stopCurrentMode();
+    }
 
     /**
      * Finds the node contained in the message and starts it. If no matches found, it will start the default.
@@ -50,17 +50,17 @@ public class RunModeControl {
         );
     }
 
-	public void start(RunMode mode) {
-		stopCurrentMode();
-		startNewMode(mode);
-	}
+    public void start(RunMode mode) {
+        stopCurrentMode();
+        startNewMode(mode);
+    }
 
     private Predicate<? super RunMode> matchMode(String mode) {
-        return e -> e.identify().equalsIgnoreCase(mode);
+        return e -> e.identify().getName().equalsIgnoreCase(mode);
     }
 
     private void startNewMode(final RunMode mode) {
-		logger.info("Starting with new mode " + mode);
+        logger.info("Starting with new mode " + mode);
         currentMode = mode;
         currentMode.start();
 

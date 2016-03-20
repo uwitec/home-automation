@@ -23,8 +23,8 @@ public class LightCapabilityRunModeFactory {
     public LightRunMode[] createLightRunModes() {
         List<LightRunMode> result = new ArrayList<>();
 
-        for (RunMode runMode : allModes){
-            result.add(new LightRunMode(runMode.identify()));
+        for (RunMode runMode : allModes) {
+            result.add(runMode.identify());
         }
 
         return result.toArray(new LightRunMode[result.size()]);
